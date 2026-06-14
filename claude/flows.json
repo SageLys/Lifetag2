@@ -1,0 +1,92 @@
+[
+  {
+    "id": "flow_big_company",
+    "displayName": "大厂流向",
+    "shortName": "大厂",
+    "description": "标准化用人体系。偏好年轻、名校、能加班、抗压、无舆论污点。雷区：35+、维权意识强、反骨。",
+    "buyerName": "大厂收购站",
+    "pendingText": "背调中",
+    "uiTone": "corporate"
+  },
+  {
+    "id": "flow_startup",
+    "displayName": "创业流向",
+    "shortName": "创业",
+    "description": "高压低保障用人体系。偏好能加班、低薪接受、外地人、画饼接受度高。雷区：过早觉醒、无法画饼、维权意识强。",
+    "buyerName": "创业孵化厂",
+    "pendingText": "签单审核中",
+    "uiTone": "pressure"
+  },
+  {
+    "id": "flow_romance",
+    "displayName": "婚恋流向",
+    "shortName": "婚恋",
+    "description": "家庭配对评价体系。偏好稳定、体面、情绪稳定、本地户籍、家庭可解释、资产可见。雷区：空心人设、债务压力、已离婚（需核查）。",
+    "buyerName": "婚恋配对所",
+    "pendingText": "家长审核中",
+    "uiTone": "warm"
+  },
+  {
+    "id": "flow_traffic",
+    "displayName": "流量流向",
+    "shortName": "流量",
+    "description": "情绪消费体系。偏好争议感、会发疯、黑红体质、出圈潜力、极端案例。雷区：无聊、太稳定、无内容价值。",
+    "buyerName": "流量变现池",
+    "pendingText": "数据追踪中",
+    "uiTone": "chaotic"
+  },
+  {
+    "id": "flow_system",
+    "displayName": "体制流向",
+    "shortName": "体制",
+    "description": "公务员、国企、事业单位配置体系。偏好党员身份、体制经历、本地户籍、稳定、家庭可解释。雷区：诉讼记录、反骨、历史黑料。",
+    "buyerName": "体制内编制局",
+    "pendingText": "政审进行中",
+    "uiTone": "institutional"
+  },
+  {
+    "id": "flow_academia",
+    "displayName": "学术流向",
+    "shortName": "学术",
+    "description": "高校及科研院所评估体系。偏好高学历、名校、证书丰富、稳定、海归背景。雷区：履历注水、职业倦怠、频繁跳槽。",
+    "buyerName": "象牙塔招聘组",
+    "pendingText": "评审委员会审查中",
+    "uiTone": "academic"
+  },
+  {
+    "id": "flow_overseas",
+    "displayName": "出海流向",
+    "shortName": "出海",
+    "description": "跨国公司、外派项目及移民通道。偏好双语能力、海归背景、技术栈新、无舆论污点、体检达标。雷区：诉讼记录、平台封禁、家庭纠缠。",
+    "buyerName": "出海中转站",
+    "pendingText": "签证材料审核中",
+    "uiTone": "global"
+  },
+  {
+    "id": "flow_downshift",
+    "displayName": "降档流向",
+    "shortName": "降档",
+    "description": "返乡、小城市就业或主动降低期望值通道。接受门槛低，几乎无雷区，但对高溢价标签无感，薪资天花板高反而不符。",
+    "buyerName": "二线回收站",
+    "pendingText": "本地接纳评估中",
+    "uiTone": "muted"
+  },
+  {
+    "id": "flow_self_employed",
+    "displayName": "个体流向",
+    "shortName": "个体",
+    "description": "自由职业、个体工商及小规模创业通道。偏好副业在身、自学出身、踏实肯干、隐藏人脉。雷区：债务压力、成瘾倾向、家庭纠缠（占用资源）。",
+    "buyerName": "个体工商档案室",
+    "pendingText": "营业执照审核中",
+    "uiTone": "indie"
+  },
+  {
+    "id": "flow_knowledge_economy",
+    "displayName": "知识付费流向",
+    "shortName": "知识变现",
+    "description": "培训、课程IP及知识付费赛道。偏好表达清晰、争议感、出圈潜力、管理经验、海归背景。雷区：空心人设、历史黑料（被学员挖出）、平台封禁。",
+    "buyerName": "知识付费变现站",
+    "pendingText": "课程内容评估中",
+    "uiTone": "aspirational"
+  }
+]

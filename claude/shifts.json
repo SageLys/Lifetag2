@@ -1,0 +1,479 @@
+[
+  {
+    "id": "shift_01_orientation",
+    "order": 1,
+    "displayName": "第一班：入职窗口",
+    "introText": "二楼批发区九点整准时开门。请注意，今日开放流向：大厂收购站、创业孵化厂。其余柜台暂未就位，敬请期待。",
+    "objectiveText": "处理全部到货案件，将每个案件出货或退货。禁止压单收班。",
+    "summaryTitle": "第一班收班记录",
+    "caseIds": [
+      "case_a01_fresh_elite",
+      "case_a02_middle_stable",
+      "case_a03_migrant_worker"
+    ],
+    "nextShiftId": "shift_02_romance_opens",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup"
+    ],
+    "resources": {
+      "investigationPoints": 3,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "block_end",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": true,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift01_min_ship",
+        "type": "min_shipped_cases",
+        "target": 2,
+        "depositDelta": -1,
+        "failText": "本班出货数量不足，系统判定本班绩效未达标。押金标签扣除 1 枚。",
+        "passText": "本班出货数量达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_day",
+      "boardTitle": "二楼批发区 · 入职窗口"
+    }
+  },
+  {
+    "id": "shift_02_romance_opens",
+    "order": 2,
+    "displayName": "第二班：婚恋柜台上线",
+    "introText": "早安。今日婚恋配对所正式开放接件。请注意新柜台的评估逻辑与大厂收购站存在显著差异，请操盘员自行适应。",
+    "objectiveText": "处理全部到货案件，至少完成 2 单有效出货。",
+    "summaryTitle": "第二班收班记录",
+    "caseIds": [
+      "case_b01_debt_beauty",
+      "case_b02_settled_adult",
+      "case_b03_psych_hidden"
+    ],
+    "nextShiftId": "shift_03_traffic_opens",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance"
+    ],
+    "resources": {
+      "investigationPoints": 3,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "block_end",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": true,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift02_min_ship",
+        "type": "min_shipped_cases",
+        "target": 2,
+        "depositDelta": -1,
+        "failText": "本班出货数量不足，系统判定本班绩效未达标。押金标签扣除 1 枚。",
+        "passText": "本班出货数量达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_day",
+      "boardTitle": "二楼批发区 · 婚恋柜台上线"
+    }
+  },
+  {
+    "id": "shift_03_traffic_opens",
+    "order": 3,
+    "displayName": "第三班：流量入场",
+    "introText": "流量变现池今日开始接件。请注意，流量柜台的审美标准与其他柜台不在同一坐标系内。欢迎开拓思路。",
+    "objectiveText": "处理全部到货案件。本班起未处理案件将自动退货，请自行规划优先顺序。",
+    "summaryTitle": "第三班收班记录",
+    "caseIds": [
+      "case_c01_banned_influencer",
+      "case_c02_single_mother",
+      "case_c03_black_red_persona"
+    ],
+    "nextShiftId": "shift_04_system_opens",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic"
+    ],
+    "resources": {
+      "investigationPoints": 2,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "auto_return",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": false,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift03_min_ship",
+        "type": "min_shipped_cases",
+        "target": 2,
+        "depositDelta": -1,
+        "failText": "本班出货数量不足，系统判定本班绩效未达标。押金标签扣除 1 枚。",
+        "passText": "本班出货达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_afternoon",
+      "boardTitle": "二楼批发区 · 流量入场"
+    }
+  },
+  {
+    "id": "shift_04_system_opens",
+    "order": 4,
+    "displayName": "第四班：体制与降档",
+    "introText": "体制内编制局与二线回收站今日同步开放接件。请操盘员注意：两个新柜台偏好稳定型案件，但各有侧重，请自行区分。",
+    "objectiveText": "处理到货案件，至少出货 3 单。资源有限，请审慎分配调查机会。",
+    "summaryTitle": "第四班收班记录",
+    "caseIds": [
+      "case_d01_awakened_cadre",
+      "case_d02_veteran_worker",
+      "case_d03_overseas_returnee"
+    ],
+    "nextShiftId": "shift_05_academia_opens",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift"
+    ],
+    "resources": {
+      "investigationPoints": 2,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "auto_return",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": false,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift04_min_ship",
+        "type": "min_shipped_cases",
+        "target": 3,
+        "depositDelta": -1,
+        "failText": "本班出货数量未达目标，押金标签扣除 1 枚。",
+        "passText": "本班出货数量达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_afternoon",
+      "boardTitle": "二楼批发区 · 体制与降档"
+    }
+  },
+  {
+    "id": "shift_05_academia_opens",
+    "order": 5,
+    "displayName": "第五班：象牙塔接件",
+    "introText": "象牙塔招聘组今日开放接件。提醒：学术柜台的审核周期最长，标准最窄，请操盘员注意评估精准度。",
+    "objectiveText": "处理到货案件。本班含高难度案件，误判风险上升，请合理使用调查机会。",
+    "summaryTitle": "第五班收班记录",
+    "caseIds": [
+      "case_e01_burnout_professor",
+      "case_e02_mid_life_pivot",
+      "case_e03_housewife_return",
+      "case_e04_gen_z_dropout"
+    ],
+    "nextShiftId": "shift_06_indie_opens",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia"
+    ],
+    "resources": {
+      "investigationPoints": 2,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "auto_return",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": false,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift05_min_ship",
+        "type": "min_shipped_cases",
+        "target": 3,
+        "depositDelta": -1,
+        "failText": "本班出货数量未达目标，押金标签扣除 1 枚。",
+        "passText": "本班出货数量达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_dusk",
+      "boardTitle": "二楼批发区 · 象牙塔接件"
+    }
+  },
+  {
+    "id": "shift_06_indie_opens",
+    "order": 6,
+    "displayName": "第六班：个体与知识变现",
+    "introText": "个体工商档案室与知识付费变现站今日开放接件。系统提示：本批案件底标密度较高，请操盘员自行判断是否值得调查。",
+    "objectiveText": "处理到货案件。押金储备有限，高风险案件请谨慎出货。",
+    "summaryTitle": "第六班收班记录",
+    "caseIds": [
+      "case_f01_freelance_consultant",
+      "case_f02_ex_executive",
+      "case_f03_rural_returnee",
+      "case_f04_labor_hero"
+    ],
+    "nextShiftId": "shift_07_final_rush",
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed"
+    ],
+    "resources": {
+      "investigationPoints": 2,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "auto_return",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": false,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift06_min_ship",
+        "type": "min_shipped_cases",
+        "target": 3,
+        "depositDelta": -1,
+        "failText": "本班出货数量未达目标，押金标签扣除 1 枚。",
+        "passText": "本班出货数量达标。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_dusk",
+      "boardTitle": "二楼批发区 · 个体与知识变现"
+    }
+  },
+  {
+    "id": "shift_07_final_rush",
+    "order": 7,
+    "displayName": "第七班：最后的流通日",
+    "introText": "今日为试用期最终班次。全部流向柜台同步开放。系统提示：本班结束后将进入试用期终审程序，请操盘员做好准备。",
+    "objectiveText": "处理本班全部案件。本班为试用期最终考核，出货精准度将影响试用期最终评定。",
+    "summaryTitle": "试用期终班记录",
+    "caseIds": [
+      "case_g01_successful_failure",
+      "case_g02_hidden_wealth",
+      "case_g03_pua_survivor",
+      "case_g04_overseas_limbo"
+    ],
+    "nextShiftId": null,
+    "availableActionIds": [
+      "selectCase",
+      "inspectCase",
+      "revealHiddenTag",
+      "shipCase",
+      "returnCase",
+      "endShift"
+    ],
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed",
+      "flow_overseas",
+      "flow_knowledge_economy"
+    ],
+    "resources": {
+      "investigationPoints": 3,
+      "marketActionPoints": 0,
+      "timeRemainingSeconds": null
+    },
+    "actionCosts": {
+      "inspectCase": {
+        "investigationPoints": -1
+      },
+      "revealHiddenTag": {
+        "investigationPoints": -1
+      },
+      "shipCase": {},
+      "returnCase": {},
+      "endShift": {}
+    },
+    "rules": {
+      "unprocessedCasePolicy": "auto_return",
+      "hiddenTagRevealMode": "ordered",
+      "requiresInspectionBeforeShipping": false,
+      "requiresRevealBeforeShipping": false,
+      "performancePenaltyCap": 1,
+      "allowEndShiftWhenCallbacksPending": true
+    },
+    "performanceRules": [
+      {
+        "id": "perf_shift07_min_ship",
+        "type": "min_shipped_cases",
+        "target": 3,
+        "depositDelta": -1,
+        "failText": "最终班次出货数量未达标，押金标签扣除 1 枚。",
+        "passText": "最终班次出货达标。试用期考核数据已封存。"
+      }
+    ],
+    "ui": {
+      "backgroundKey": "office_floor_2_night",
+      "boardTitle": "二楼批发区 · 最后的流通日"
+    }
+  }
+]
