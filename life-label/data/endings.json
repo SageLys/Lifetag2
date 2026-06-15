@@ -1,0 +1,41 @@
+[
+  {
+    "id": "ending_regularized_operator",
+    "priority": 10,
+    "title": "转为正式操盘员",
+    "reportHeader": "试用期归档报告",
+    "bodyText": "系统建议：转为正式操盘员。备注：押金标签保全完好，出货精度达标，可继续签署后续责任豁免文件。原名予以保留。",
+    "conditions": {
+      "requiredRunStatus": "active",
+      "minDepositTags": 4,
+      "minCompletedShifts": 7,
+      "maxFailedShipments": 2
+    },
+    "resultTags": ["在册员工", "可继续签署"]
+  },
+  {
+    "id": "ending_kept_on_probation",
+    "priority": 50,
+    "title": "予以留用",
+    "reportHeader": "试用期归档报告",
+    "bodyText": "系统建议：予以留用。备注：押金标签尚存，处理记录基本完整，但出货失误高于转正阈值。继续观察。",
+    "conditions": {
+      "requiredRunStatus": "active",
+      "minDepositTags": 2,
+      "minCompletedShifts": 7
+    },
+    "resultTags": ["留用观察"]
+  },
+  {
+    "id": "ending_probation_extended",
+    "priority": 100,
+    "title": "延长试用",
+    "reportHeader": "试用期归档报告",
+    "bodyText": "系统建议：延长试用。备注：押金尚存，但处理记录不足以完成转正。请于下一周期重新报到。",
+    "conditions": {
+      "requiredRunStatus": "active",
+      "minDepositTags": 1
+    },
+    "resultTags": ["临时操盘员", "继续观察"]
+  }
+]

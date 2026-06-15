@@ -1,0 +1,520 @@
+[
+  {
+    "id": "tag_young",
+    "displayName": "年轻",
+    "description": "年龄处于市场偏好区间，30岁以下",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_elite_school",
+    "displayName": "名校",
+    "description": "毕业院校在主流认知中具有品牌溢价",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_stable",
+    "displayName": "稳定",
+    "description": "在同一雇主或状态下持续时间较长，无明显波动",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_presentable",
+    "displayName": "体面",
+    "description": "外部形象符合主流社会对\"得体\"的定义",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_emotionally_stable",
+    "displayName": "情绪稳定",
+    "description": "情绪表达在观察期内无明显失控记录",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_overwork_ready",
+    "displayName": "能加班",
+    "description": "在历史记录中接受并执行了超出标准工时的工作安排",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_pressure_tolerant",
+    "displayName": "抗压",
+    "description": "在高压环境下维持了可观察的正常输出",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_high_degree",
+    "displayName": "高学历",
+    "description": "持有硕士或以上学位",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_management_exp",
+    "displayName": "管理经验",
+    "description": "有直属下属管理记录，团队规模不限",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_bilingual",
+    "displayName": "双语能力",
+    "description": "能以非母语进行有效工作沟通",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_work_ethic",
+    "displayName": "踏实肯干",
+    "description": "执行力指标稳定，无拖延或推诿记录",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_family_readable",
+    "displayName": "家庭可解释",
+    "description": "家庭构成在主流评估框架内没有明显异常项",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_visible_assets",
+    "displayName": "资产可见",
+    "description": "持有可核实的固定资产，如房产或车辆",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_local_hukou",
+    "displayName": "本地户籍",
+    "description": "户口登记地与工作城市一致",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_party_member",
+    "displayName": "党员身份",
+    "description": "在册中共党员",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_only_child",
+    "displayName": "独生子女",
+    "description": "无兄弟姐妹，父母唯一继承人",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_tech_current",
+    "displayName": "技术栈新",
+    "description": "掌握的技术工具处于当前市场前沿区间",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_expressive",
+    "displayName": "表达清晰",
+    "description": "在公开或职场场景中的口头及书面表达无障碍",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_low_salary_ok",
+    "displayName": "低薪接受",
+    "description": "薪资预期低于同类候选人市场均值",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_childfree",
+    "displayName": "未育",
+    "description": "无子女，生育计划未确定或明确不育",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_healthy_body",
+    "displayName": "体检达标",
+    "description": "最近一次体检报告无主要项目异常",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_clean_online",
+    "displayName": "无舆论污点",
+    "description": "可检索公开内容中无负面热点记录",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_overseas_edu",
+    "displayName": "海归背景",
+    "description": "曾在境外完成学历教育并回国发展",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_system_exp",
+    "displayName": "体制经历",
+    "description": "曾在政府机关、国企或事业单位任职",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_certificate_rich",
+    "displayName": "证书丰富",
+    "description": "持有三项以上行业认可资质证书",
+    "category": "visible",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_35plus",
+    "displayName": "35+",
+    "description": "年龄超过35岁，处于部分用人单位的隐性年龄门槛以上",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_45plus",
+    "displayName": "45+",
+    "description": "年龄超过45岁，进入大多数标准就业体系的高风险区间",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_gen_z",
+    "displayName": "00后",
+    "description": "2000年后出生，职场经验有限但社交适应性强",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_freelancer",
+    "displayName": "自由职业",
+    "description": "无固定雇主，收入来源分散且不稳定",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_unemployed",
+    "displayName": "待业",
+    "description": "目前无在职状态，离职时间超过三个月",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_employed",
+    "displayName": "在职",
+    "description": "目前有在职状态，处于跳槽观望阶段",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_non_local",
+    "displayName": "外地人",
+    "description": "在当前城市无户籍，户口在外地",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_non_only_child",
+    "displayName": "非独生",
+    "description": "有兄弟姐妹，可能存在家庭资产分割预期",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_divorced",
+    "displayName": "已离婚",
+    "description": "有过婚史，目前单身或重新进入交友市场",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_single_parent",
+    "displayName": "单亲",
+    "description": "独立抚养子女，无配偶",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_gap_year",
+    "displayName": "间隔年",
+    "description": "履历中存在超过半年的空窗期，原因未标注",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_job_hopper",
+    "displayName": "频繁跳槽",
+    "description": "过去五年内换过四家以上雇主",
+    "category": "visible",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_career_change",
+    "displayName": "跨行转型",
+    "description": "当前求职方向与过往履历主线不符",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_remote_work",
+    "displayName": "远程办公",
+    "description": "主要工作方式为远程，无固定办公地",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_self_study",
+    "displayName": "自学出身",
+    "description": "核心技能通过自学获得，无对应学历背书",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_migrant_worker",
+    "displayName": "外来务工",
+    "description": "从农村或小城市进入大城市务工，无城市资源积累",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_moonlighter",
+    "displayName": "副业在身",
+    "description": "在主业之外有持续运营的收入来源或副业项目",
+    "category": "visible",
+    "uiTone": "normal"
+  },
+  {
+    "id": "tag_controversial",
+    "displayName": "争议感",
+    "description": "公开内容或经历具有明显的两极化评价倾向",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_goes_crazy",
+    "displayName": "会发疯",
+    "description": "情绪表达方式偶发极端化，可引发社交裂变",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_black_red",
+    "displayName": "黑红体质",
+    "description": "负面事件反而带来关注度增长的历史记录",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_stable_emotion_output",
+    "displayName": "情绪输出稳定",
+    "description": "能持续、可复制地输出情绪类内容，具有变现价值",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_fragile",
+    "displayName": "脆皮",
+    "description": "可见的心理或身体承压阈值偏低，具有代入感",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_extreme_case",
+    "displayName": "极端案例",
+    "description": "人生轨迹具有统计意义上的稀缺性，超出常规参照系",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_viral_potential",
+    "displayName": "出圈潜力",
+    "description": "存在跨圈层传播的标签组合或故事弧度",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_sympathy_magnet",
+    "displayName": "共情标本",
+    "description": "处境易引发大范围同情共鸣，流量转化率高",
+    "category": "visible",
+    "uiTone": "strange"
+  },
+  {
+    "id": "tag_resume_padding",
+    "displayName": "履历注水",
+    "description": "简历内容与可核实事实存在夸大或虚构成分",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_labor_rights_aware",
+    "displayName": "维权意识强",
+    "description": "有劳动仲裁、投诉举报或公开维权的历史记录",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_debt_pressure",
+    "displayName": "债务压力",
+    "description": "存在贷款、网贷或借款记录，月供负担超过收入40%",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_psych_trauma",
+    "displayName": "心理创伤",
+    "description": "有可记录的重大心理创伤事件，影响长期功能状态",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_emotion_bomb",
+    "displayName": "情绪炸弹",
+    "description": "在特定触发条件下产生不可控情绪爆发，难以预测",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_employer_dispute",
+    "displayName": "前雇主纠纷",
+    "description": "与前任雇主之间存在未结清的法律或非正式争议",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_lawsuit_history",
+    "displayName": "诉讼记录",
+    "description": "有作为当事方参与民事或行政诉讼的公开记录",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_platform_ban",
+    "displayName": "平台封禁",
+    "description": "曾被一个或多个主流内容平台封号或限流",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_hollow_persona",
+    "displayName": "空心人设",
+    "description": "对外呈现的人格形象与内部实际状态存在系统性落差",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_early_awakened",
+    "displayName": "过早觉醒",
+    "description": "对职场规则、制度逻辑有清醒认知，执行服从意愿低",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_pua_victim",
+    "displayName": "职场PUA史",
+    "description": "曾长期处于职场精神控制环境中，应激模式仍在运作",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_hidden_illness",
+    "displayName": "隐性慢病",
+    "description": "存在未在档案中披露的慢性疾病，影响长期工作连续性",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_family_complex",
+    "displayName": "家庭纠缠",
+    "description": "家庭关系存在复杂经济或情感依附，会持续占用精力资源",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_anti_establishment",
+    "displayName": "反骨",
+    "description": "在历史记录中有持续抵制上级指令或制度安排的行为模式",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_no_pie",
+    "displayName": "无法画饼",
+    "description": "对非物质激励的接受能力极低，无法被愿景或期权说服",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_salary_ceiling",
+    "displayName": "薪资天花板",
+    "description": "实际薪资预期远超本人标签组合对应的市场价值",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_reference_hazard",
+    "displayName": "背调雷区",
+    "description": "前任雇主拒绝配合背调或会提供负面信息",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_online_notoriety",
+    "displayName": "历史黑料",
+    "description": "互联网上存在可被翻出的负面内容，当事人已遗忘但仍可检索",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_burnout",
+    "displayName": "职业倦怠",
+    "description": "长期高负荷工作后进入低动力状态，表面正常但内部已停转",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_addiction",
+    "displayName": "成瘾倾向",
+    "description": "存在对某种物质或行为的依赖模式，影响正常功能",
+    "category": "hidden",
+    "uiTone": "risk"
+  },
+  {
+    "id": "tag_hidden_network",
+    "displayName": "隐藏人脉",
+    "description": "拥有高价值人际资源网络，但从不在公开档案中展示",
+    "category": "hidden",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_true_strength",
+    "displayName": "真实强者",
+    "description": "实际能力远超外部标签呈现，需要深度接触才能发现",
+    "category": "hidden",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_hidden_product_mind",
+    "displayName": "产品思维",
+    "description": "具备从用户需求出发构建系统的认知能力，未在履历中体现",
+    "category": "hidden",
+    "uiTone": "valuable"
+  },
+  {
+    "id": "tag_silent_accumulator",
+    "displayName": "暗中积累",
+    "description": "长期在低调状态下进行资源、技能或资产的积累，实力被严重低估",
+    "category": "hidden",
+    "uiTone": "valuable"
+  }
+]

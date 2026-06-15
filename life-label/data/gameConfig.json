@@ -1,0 +1,26 @@
+{
+  "id": "life_tag_trial_mvp",
+  "version": "0.3.0",
+  "title": "人生标签交易所：试用期",
+  "firstShiftId": "shift_01_orientation",
+  "defaultEndingId": "ending_probation_extended",
+  "initialDepositTags": 5,
+  "maxDepositTags": 5,
+  "defaultShiftResources": {
+    "investigationPoints": 2,
+    "marketActionPoints": 0,
+    "timeRemainingSeconds": null
+  },
+  "defaultActionCosts": {
+    "inspectCase": { "investigationPoints": -1 },
+    "revealHiddenTag": { "investigationPoints": -1 },
+    "shipCase": {},
+    "returnCase": {},
+    "endShift": {}
+  },
+  "mvpFlags": {
+    "enableMarketActions": false,
+    "enableRealTimer": false,
+    "enableSave": false
+  }
+}
