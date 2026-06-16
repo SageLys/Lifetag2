@@ -37,7 +37,7 @@ window.addEventListener('resize', resize);
 resize();
 
 // ---------- 数据容器 ----------
-const DATA = { config: null, cases: null, flows: null, shifts: null, tags: null, endings: null };
+const DATA = { config: null, cases: null, flows: null, shifts: null, tags: null, endings: null, mascot: null };
 let GAMECONFIG = null;
 let tagsById = {}, casesById = {}, flowsById = {}, shiftsById = {};
 
@@ -691,7 +691,7 @@ function acknowledgeCallback(state) {
   state.reviewQueue.shift();
   if (state.phase === 'RUN_FAILED') return;       // §8.1 中断
   if (state.reviewQueue.length === 0) {
-    if (state.phase === 'CALLBACK_REVIEW') { setPhase(state, 'SHIFT_ACTIVE'); }
+    if (state.phase === 'CALLBACK_REVIEW') { setPhase(state, 'SHIFT_ACTIVE'); checkAutoEndShift(state); }
     else { finishFinalCallbackReview(state); }
   }
 }
@@ -699,6 +699,13 @@ function acknowledgeCallback(state) {
 function finishFinalCallbackReview(state) {
   setPhase(state, 'ENDING_BUILD');
   buildEnding(state);
+}
+
+// 所有案件处理完时自动收班
+function checkAutoEndShift(state) {
+  if (state.phase === 'SHIFT_ACTIVE' && state.activeCaseIds.length === 0) {
+    endShift(state);
+  }
 }
 
 // §5.10 endShift / 收班
@@ -714,11 +721,12 @@ function endShift(state, opts) {
   const shift = shiftsById[state.currentShiftId];
   const policy = shift.rules.unprocessedCasePolicy;
   const forcedByTimeout = !!opts.forcedByTimeout;
-  if (!forcedByTimeout && policy === 'block_end' && state.activeCaseIds.length > 0)
+  const forceReturn = !!opts.forceReturn;
+  if (!forcedByTimeout && !forceReturn && policy === 'block_end' && state.activeCaseIds.length > 0)
     return fail(state, '仍有未处理案件，无法收班');
 
   // 自动退货
-  if (forcedByTimeout || policy === 'auto_return') {
+  if (forcedByTimeout || forceReturn || policy === 'auto_return') {
     const remaining = state.activeCaseIds.slice();
     for (const id of remaining) {
       const cs = casesById[id];
@@ -903,18 +911,22 @@ const UI = {
   revealPop: null,
   toast: null,               // {text, t}
   mascotBubble: null,        // §6.4 标宝偶发台词气泡 {text,t}
+  confirmEndShift: false,    // 收班确认对话框
   flowZones: [],
   mouse: { x: 0, y: 0 },
   elapsed: 0             // 累计秒数，用于闪烁动画
 };
-// §6.4 标宝语录（Shell 层装饰文案，企业宣传口吻）
-const MASCOT_LINES = [
-  '感谢您为人生流通作出贡献！',
-  '今日行情波动，请做好心理准备。',
-  '本交易所不承担出货后的叙事责任。',
-  '每一个案件，都是宝贵的流通资源。'
-];
-function pickMascotLine() { return MASCOT_LINES[Math.floor(Math.random() * MASCOT_LINES.length)]; }
+// §6.4 标宝语录 —— 读 data/mascot.json，优先班次专属台词（60%），其余抽通用池
+function pickMascotLine(state) {
+  const m = DATA.mascot;
+  if (!m) return '感谢您为人生流通作出贡献！';
+  const shiftId = state && state.currentShiftId;
+  const shiftLines = shiftId && m.byShift && m.byShift[shiftId];
+  if (shiftLines && shiftLines.length > 0 && Math.random() < 0.6)
+    return shiftLines[Math.floor(Math.random() * shiftLines.length)];
+  const general = m.general || [];
+  return general.length ? general[Math.floor(Math.random() * general.length)] : '感谢您为人生流通作出贡献！';
+}
 function showMascotBubble(text) { UI.mascotBubble = { text, t: 0 }; }
 let clickTargets = [];       // 每帧重建的叠层按钮 [{x,y,w,h,fn}]
 
@@ -1544,7 +1556,10 @@ function closeActionResult(state) {
   if (next === 'CALLBACK_REVIEW') {
     state.readyCallbackIds = state.pendingCallbacks.filter(c => c.status === 'ready').map(c => c.id);
     enterCallbackReview(state, 'CALLBACK_REVIEW');
-  } else setPhase(state, next);
+  } else {
+    setPhase(state, next);
+    checkAutoEndShift(state);
+  }
 }
 
 function drawShiftSummary(state) {
@@ -1584,6 +1599,10 @@ function drawShiftSummary(state) {
   for (const pr of s.perfResults) {
     ctx.fillStyle = pr.pass ? '#7DC67D' : '#E57373';
     yy = wrapText(ctx, (pr.pass ? '✓ ' : '✕ ') + pr.text, px + 50, yy, pw - 100, 20, 2) + 14;
+  }
+  if (DATA.mascot && DATA.mascot.summaryNotes) {
+    const note = DATA.mascot.summaryNotes[state.currentShiftId] || DATA.mascot.summaryNotes.default || '';
+    if (note) { ctx.fillStyle = '#5A5247'; ctx.font = '10px "Courier New"'; wrapText(ctx, note, px + 50, py + ph - 100, pw - 100, 16, 2); }
   }
   const hasNext = !!shift.nextShiftId;
   button(hasNext ? '进入下一班' : '进入试用期终审', BASE_W / 2 - 110, py + ph - 64, 220, 46, true,
@@ -1693,7 +1712,7 @@ function drawRunFailed(state) {
   div(yy); yy += 14;
   // 标宝附注 + 统计
   ctx.fillStyle = '#757575'; ctx.font = '10px "Courier New"';
-  ctx.fillText('〔 标宝附注 〕 感谢您为人生流通作出贡献！T-00 档案将在下轮开始时归档销毁，本交易所不留记录，但您可以留。', px + 22, yy); yy += 18;
+  ctx.fillText((DATA.mascot && DATA.mascot.failedNote) || '〔 标宝附注 〕 感谢您为人生流通作出贡献！T-00 档案将在下轮开始时归档销毁，本交易所不留记录，但您可以留。', px + 22, yy); yy += 18;
   if (state && state.stats) {
     ctx.fillStyle = '#5A5247';
     ctx.fillText('完成班次 ' + shifts + '  ·  出货失误 ' + failedShips, px + 22, yy);
@@ -1723,8 +1742,13 @@ function drawScene(state) {
   // 收班按钮
   if (state.phase === 'SHIFT_ACTIVE') {
     const can = canEndShift(state);
+    const hasRemaining = state.activeCaseIds.length > 0;
     button('收 班', 196 + 752 - 110, AREA_TOP + 12, 96, 36, true,
-      () => { const r = endShift(state); }, { color: can ? COLORS.gold : '#7A6B52', hotColor: '#F57F17', font: '13px "ZCOOL KuaiLe"' });
+      () => {
+        if (hasRemaining) { UI.confirmEndShift = true; }
+        else { endShift(state); }
+      },
+      { color: can ? COLORS.gold : '#7A6B52', hotColor: '#F57F17', font: '13px "ZCOOL KuaiLe"' });
     // 调查机会指示
     ctx.fillStyle = 'rgba(212,197,169,0.7)'; ctx.font = 'bold 14px "Noto Sans SC"'; ctx.textAlign = 'left';
     ctx.fillText('行动点:' + state.resources.investigationPoints, 206, AREA_TOP + 34);
@@ -1732,9 +1756,37 @@ function drawScene(state) {
   // §6.4 标宝偶发台词气泡（仅在班次进行中显示，避免遮挡弹窗）
   if (state.phase === 'SHIFT_ACTIVE') {
     if (state._depositBubblePending) { showMascotBubble('押金标签尚余 ' + state.depositTags.current + ' 枚，请注意操盘质量。'); state._depositBubblePending = false; }
-    else if (state._mascotPending) { showMascotBubble(pickMascotLine()); state._mascotPending = false; }
+    else if (state._mascotPending) { showMascotBubble(pickMascotLine(state)); state._mascotPending = false; }
     drawMascotBubble();
+    if (UI.confirmEndShift) drawConfirmEndShift(state);
   }
+}
+
+function drawConfirmEndShift(state) {
+  const n = state.activeCaseIds.length;
+  // 全屏拦截先加（倒序遍历中优先级最低），防止点击穿透到卡片交互
+  clickTargets.push({ x: 0, y: 0, w: BASE_W, h: BASE_H, fn: () => {} });
+  // 半透明遮罩
+  ctx.fillStyle = 'rgba(20,14,8,0.65)';
+  ctx.fillRect(0, 0, BASE_W, BASE_H);
+  // 对话框面板
+  const pw = 460, ph = 200, px = (BASE_W - pw) / 2, py = (BASE_H - ph) / 2;
+  panel(px, py, pw, ph);
+  // 标题
+  ctx.fillStyle = COLORS.gold; ctx.font = '18px "ZCOOL KuaiLe"'; ctx.textAlign = 'center';
+  ctx.fillText('确认提前收班？', BASE_W / 2, py + 44);
+  // 说明文字
+  ctx.fillStyle = '#E8DCC8'; ctx.font = '13px "Noto Sans SC"'; ctx.textAlign = 'center';
+  ctx.fillText('当前仍有 ' + n + ' 件案件未处理，', BASE_W / 2, py + 82);
+  ctx.fillText('确认收班后将全部自动退货。', BASE_W / 2, py + 104);
+  // 按钮后加（倒序遍历中优先级高于全屏拦截）
+  button('确 认 收 班', px + 48, py + ph - 62, 160, 42, true,
+    () => { UI.confirmEndShift = false; endShift(state, { forceReturn: true }); },
+    { color: COLORS.brandRed, hotColor: COLORS.brandRedDark, font: '14px "ZCOOL KuaiLe"' });
+  button('取 消', px + pw - 208, py + ph - 62, 160, 42, true,
+    () => { UI.confirmEndShift = false; },
+    { color: '#5A4A32', hotColor: '#7A6040', font: '14px "ZCOOL KuaiLe"' });
+  ctx.textAlign = 'left';
 }
 
 function drawStampLayer() {
@@ -2016,12 +2068,12 @@ function drawLoading(msg) {
 }
 
 async function loadData() {
-  const files = ['gameConfig', 'tags', 'flows', 'cases', 'shifts', 'endings'];
+  const files = ['gameConfig', 'tags', 'flows', 'cases', 'shifts', 'endings', 'mascot'];
   const results = await Promise.all(files.map(f => fetch('data/' + f + '.json').then(r => {
     if (!r.ok) throw new Error('HTTP ' + r.status + ' @ ' + f); return r.json();
   })));
   DATA.config = results[0]; DATA.tags = results[1]; DATA.flows = results[2];
-  DATA.cases = results[3]; DATA.shifts = results[4]; DATA.endings = results[5];
+  DATA.cases = results[3]; DATA.shifts = results[4]; DATA.endings = results[5]; DATA.mascot = results[6];
   GAMECONFIG = DATA.config;
   DATA.tags.forEach(t => tagsById[t.id] = t);
   DATA.cases.forEach(c => casesById[c.id] = c);
