@@ -2877,5 +2877,1738 @@
       }
     },
     "authorNotes": "最终班次压轴案。出海流向使用callbackDelay=final（移民获批只在结局前才知道）。债务底标主要影响婚恋，对其他流向影响有限。流量和知识经济是相对安全出口，出海是narratively最完整的出口但需要等待。"
+  },
+  {
+    "id": "case_a04_reliable_tech",
+    "caseNo": "A-04",
+    "displayName": "职校技工案",
+    "summaryText": "职校毕业，五年同岗，零投诉记录。",
+    "designedForShiftId": "shift_01_orientation",
+    "difficulty": 1,
+    "visibleTagIds": [
+      "tag_employed",
+      "tag_work_ethic",
+      "tag_low_salary_ok"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "学历为中专，专业方向为数控机床操作。在职五年，岗位未曾更换。投诉记录为零，三份年度考核均为合格。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "neutral",
+        "immediateText": "买家接收，学历项已标注不足。",
+        "callbackDelay": 1,
+        "callbackText": "背调通过，但晋升通道因学历限制受阻，以基础岗录用。",
+        "depositDelta": 0,
+        "resultTags": ["基础岗录用"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "success",
+        "immediateText": "买家标注：踏实，直接安排上岗。",
+        "callbackDelay": 1,
+        "callbackText": "入职两周出勤稳定，试用期提前结束，签单成立。",
+        "depositDelta": 1,
+        "resultTags": ["签单成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第一班新增安全案。无底标，标签直读。大厂中性，创业成功。教玩家识别踏实型案件的正确出口，不需要调查资源。"
+  },
+  {
+    "id": "case_b04_polished_trap",
+    "caseNo": "B-04",
+    "displayName": "精英陷阱案",
+    "summaryText": "名校毕业，面貌端正，情绪评级稳定。",
+    "designedForShiftId": "shift_02_romance_opens",
+    "difficulty": 2,
+    "visibleTagIds": [
+      "tag_elite_school",
+      "tag_presentable",
+      "tag_emotionally_stable"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_b04_hollow",
+        "tagId": "tag_hollow_persona",
+        "revealText": "三段就业履历的具体工作内容无法核实，推荐人电话均为无效号码。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "本科毕业于985院校，专业为国际商务。面试记录显示表达得体，评分位于前10%。情绪稳定性测评结果为A级。就业履历共三段，每段时长均超过一年。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家接收档案，背调启动。",
+        "callbackDelay": 1,
+        "callbackText": "推荐人联系方式全部失效，背调无法完成，录用撤回。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["背调失败"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "success",
+        "immediateText": "买家表示：能说会道，正是所需。",
+        "callbackDelay": 1,
+        "callbackText": "试用期内表现及格，签单成立。背景核查未被执行。",
+        "depositDelta": 0,
+        "resultTags": ["签单成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方接收，初步评估通过。",
+        "callbackDelay": 1,
+        "callbackText": "深度交往后对方报告：无法感受到真实人格存在，配对解除。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["配对解除"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第二班陷阱案。三枚正面标签完美匹配婚恋和大厂，但空心底标揭示后大厂和婚恋均失败。创业是唯一可行出口。教玩家：精英外壳不等于可靠内核。"
+  },
+  {
+    "id": "case_c04_viral_obvious",
+    "caseNo": "C-04",
+    "displayName": "明显流量案",
+    "summaryText": "争议体质，多次出圈，发疯输出稳定。",
+    "designedForShiftId": "shift_03_traffic_opens",
+    "difficulty": 1,
+    "visibleTagIds": [
+      "tag_controversial",
+      "tag_goes_crazy",
+      "tag_viral_potential"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "近十二个月内，争议性内容发布三十七次。单条最高互动量为一百二十万次。职业履历为空白，无任何传统就业记录。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，舆论风险评级最高。",
+        "callbackDelay": 0,
+        "callbackText": "争议体质触发大厂合规系统自动标红，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["合规拒收"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "failure",
+        "immediateText": "买家回绝，无合适岗位匹配。",
+        "callbackDelay": 0,
+        "callbackText": "创业方无法承担持续争议带来的合规成本，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["合规成本过高"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方接收后三小时撤回。",
+        "callbackDelay": 0,
+        "callbackText": "配对方在网络检索到争议内容，申请退单。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["配对退单"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "success",
+        "immediateText": "买家标注：正是我们要的那种人。",
+        "callbackDelay": 1,
+        "callbackText": "首条合作内容发布后数据爆发，流量方追加合同，签单成立。",
+        "depositDelta": 1,
+        "resultTags": ["签单成立"],
+        "tendencyDeltas": {
+          "traffic_instinct": 2
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "traffic_instinct": 1
+      }
+    },
+    "authorNotes": "第三班快速判断案。三枚标签明确指向流量，其余流向全部失败且有押金惩罚。设计用于在计时压力下训练玩家快速识别流量型案件。"
+  },
+  {
+    "id": "case_c05_single_parent_debt",
+    "caseNo": "C-05",
+    "displayName": "单亲困境案",
+    "summaryText": "单亲，在职，勤恳，底标待核查。",
+    "designedForShiftId": "shift_03_traffic_opens",
+    "difficulty": 3,
+    "visibleTagIds": [
+      "tag_single_parent",
+      "tag_employed",
+      "tag_work_ethic"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_c05_debt",
+        "tagId": "tag_debt_pressure",
+        "revealText": "信用报告显示两笔贷款逾期，欠款总额约为月薪的十四倍。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "育有一子，独立抚养满三年。现就职于食品加工企业，月薪处于同行末位25%区间。工作记录中无缺勤，无投诉。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家接收档案，背调启动。",
+        "callbackDelay": 1,
+        "callbackText": "单亲身份触发附加评估，家庭稳定性评级不足，拒录。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["稳定性不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "mixed",
+        "immediateText": "买家接收，家庭状况待核查。",
+        "callbackDelay": 1,
+        "callbackText": "试用期内因子女照护无法按要求加班，双方协议提前解除。",
+        "depositDelta": 0,
+        "resultTags": ["协议解除"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方初步接受，进入深度核查。",
+        "callbackDelay": 1,
+        "callbackText": "配对方家长核查后发现负债状况，终止配对程序。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["家长终止"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "mixed",
+        "immediateText": "买家标注：单亲叙事，有潜力。",
+        "callbackDelay": 1,
+        "callbackText": "个人故事流量达标，但负债记录被挖出后账号遭封禁，变现中断。",
+        "depositDelta": 0,
+        "resultTags": ["变现中断"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 2
+      }
+    },
+    "authorNotes": "第三班人道困境案。单亲+债务组合使所有四个可用流向均无理想出口。退货是最不损失押金的选择，但玩家可能因同情心而出货——所有出货均中性或失败。"
+  },
+  {
+    "id": "case_d04_hometown_return",
+    "caseNo": "D-04",
+    "displayName": "小城返乡案",
+    "summaryText": "本地户籍，家庭清晰，期望值稳健。",
+    "designedForShiftId": "shift_04_system_opens",
+    "difficulty": 1,
+    "visibleTagIds": [
+      "tag_local_hukou",
+      "tag_family_readable",
+      "tag_stable"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "户籍登记于本市，父母同址，配偶有正式工作。前一份工作为基层行政岗，任期三年，正常离职。期望月薪低于市场均值20%，优先考虑稳定性。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，竞争力评级不足。",
+        "callbackDelay": 0,
+        "callbackText": "候选人期望薪资与成长驱动力均不符合大厂标准，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["竞争力不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，激情评估不足。",
+        "callbackDelay": 0,
+        "callbackText": "期望薪资与高压环境不匹配，创业方拒绝接收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["期望不匹配"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "success",
+        "immediateText": "配对方接收，条件评估匹配。",
+        "callbackDelay": 1,
+        "callbackText": "双方正式交往，本地户籍与家庭状况均通过评估，配对成立。",
+        "depositDelta": 1,
+        "resultTags": ["配对成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容价值为零。",
+        "callbackDelay": 0,
+        "callbackText": "无争议性、无爆点、无传播势能，流量方认为毫无变现可能，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["无变现可能"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "success",
+        "immediateText": "政审材料已提交，进入排队。",
+        "callbackDelay": 1,
+        "callbackText": "政审通过，本地编制录取，正式签单成立。",
+        "depositDelta": 1,
+        "resultTags": ["编制录取"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "success",
+        "immediateText": "二线接纳评估通过，安置成立。",
+        "callbackDelay": 0,
+        "callbackText": "安置成立，目标案件已进入二线城市对口岗位。",
+        "depositDelta": 1,
+        "resultTags": ["安置成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第四班安全案。无底标，三枚标签直接指向体制和降档。大厂、创业、流量均失败且有惩罚。婚恋意外可行。教玩家快速识别体制/降档型案件以节省计时班次资源。"
+  },
+  {
+    "id": "case_d05_cadre_lawsuit",
+    "caseNo": "D-05",
+    "displayName": "政审陷阱案",
+    "summaryText": "党员，体制经历四年，档案标注整齐。",
+    "designedForShiftId": "shift_04_system_opens",
+    "difficulty": 3,
+    "visibleTagIds": [
+      "tag_party_member",
+      "tag_system_exp",
+      "tag_stable"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_d05_lawsuit",
+        "tagId": "tag_lawsuit_history",
+        "revealText": "离职前六个月存在劳动仲裁记录，仲裁结果为胜诉，记录已进入行政数据库。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "党龄七年，现任基层党组织职务。曾任职于县级行政部门，考勤记录完整。档案中存在一处标注：劳动仲裁记录，时间节点为离职前六个月。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "neutral",
+        "immediateText": "买家接收档案，背调启动。",
+        "callbackDelay": 1,
+        "callbackText": "背调未发现影响录用的异常记录，以中层岗位正式入职，表现平稳。",
+        "depositDelta": 0,
+        "resultTags": ["正常录用"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "neutral",
+        "immediateText": "签约审核通过，正式入职。",
+        "callbackDelay": 1,
+        "callbackText": "试用期通过，正常转正，体制经历被视为执行力背书。",
+        "depositDelta": 0,
+        "resultTags": ["正常转正"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "success",
+        "immediateText": "配对方接收，体制背景加分。",
+        "callbackDelay": 1,
+        "callbackText": "党员身份与体制经历为主要加分项，配对成立。",
+        "depositDelta": 1,
+        "resultTags": ["配对成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容属性不符。",
+        "callbackDelay": 0,
+        "callbackText": "体制经历在流量赛道属于最低转化类型，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["属性不符"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审材料提交，核查进行中。",
+        "callbackDelay": 1,
+        "callbackText": "政审发现仲裁记录，判定存在与前任职单位的法律纠纷，资格撤回。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["政审撤回"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "success",
+        "immediateText": "本地接纳评估通过，安置成立。",
+        "callbackDelay": 0,
+        "callbackText": "二线城市接收，仲裁记录未被纳入本地核查范围，安置成立。",
+        "depositDelta": 1,
+        "resultTags": ["安置成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第四班体制陷阱案。党员+体制经历外表完美匹配体制流向，但仲裁记录使政审失败。降档是意外安全出口。大厂和创业中性通过。教玩家：底标揭示对不同流向影响不对称。"
+  },
+  {
+    "id": "case_e05_hopper_z",
+    "caseNo": "E-05",
+    "displayName": "Z代跳槽案",
+    "summaryText": "Z世代，三年四岗，无学历背书。",
+    "designedForShiftId": "shift_05_academia_opens",
+    "difficulty": 2,
+    "visibleTagIds": [
+      "tag_gen_z",
+      "tag_job_hopper",
+      "tag_career_change"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "年龄23岁，毕业后三年内更换岗位四次。最长任职记录为十一个月。学历为专科，主修视觉传达。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，稳定性评级最低。",
+        "callbackDelay": 0,
+        "callbackText": "跳槽记录触发大厂自动筛除机制，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["稳定性不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "mixed",
+        "immediateText": "买家接收，签约一个月试岗。",
+        "callbackDelay": 1,
+        "callbackText": "试岗两月执行力尚可，但第十三周提出离职，签单失效。",
+        "depositDelta": 0,
+        "resultTags": ["试岗终止"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方拒绝，稳定性存疑。",
+        "callbackDelay": 0,
+        "callbackText": "频繁换岗记录使配对方家长判定其缺乏定性，拒配。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["家长拒配"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "success",
+        "immediateText": "买家接收，Z世代标签匹配。",
+        "callbackDelay": 1,
+        "callbackText": "内容调性符合目标人群，首周数据达标，流量方正式接收，签单成立。",
+        "depositDelta": 1,
+        "resultTags": ["签单成立"],
+        "tendencyDeltas": {
+          "traffic_instinct": 2
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审启动，资质核查不通过。",
+        "callbackDelay": 0,
+        "callbackText": "专科学历不满足编制门槛，政审直接终止。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["学历不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "mixed",
+        "immediateText": "本地接纳评估通过，候补排队。",
+        "callbackDelay": 1,
+        "callbackText": "岗位安置完成，但薪资低于预期，三个月后该案件主动申请重新分配。",
+        "depositDelta": 0,
+        "resultTags": ["安置不稳定"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审委员会拒收，资质不符。",
+        "callbackDelay": 0,
+        "callbackText": "专科学历与频繁跳槽记录均不符合学术岗位门槛，委员会一票否决。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不符"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第五班快速判断案。明显非学术，学历+跳槽双重不符。流量是最强出口，其余大多失败或中性。设计为计时压力下的快速阅读练习。"
+  },
+  {
+    "id": "case_e06_scholar_trauma",
+    "caseNo": "E-06",
+    "displayName": "学术困境案",
+    "summaryText": "博士，海归，证书密集，档案待深查。",
+    "designedForShiftId": "shift_05_academia_opens",
+    "difficulty": 4,
+    "visibleTagIds": [
+      "tag_high_degree",
+      "tag_overseas_edu",
+      "tag_certificate_rich"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_e06_trauma",
+        "tagId": "tag_psych_trauma",
+        "revealText": "前高校就职期间曾申请心理援助，记录持续两年，离职节点与援助结束时间吻合。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "学历为哲学博士，毕业于英国前20排名院校。归国后获取四项专业资格证书，现处于待业状态。前就职单位为国内某重点高校，离职原因标注为个人原因。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "success",
+        "immediateText": "买家接收，高学历优先通道。",
+        "callbackDelay": 1,
+        "callbackText": "入职成功，博士学历在技术团队受重视，表现稳定，签单成立。",
+        "depositDelta": 1,
+        "resultTags": ["签单成立"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "neutral",
+        "immediateText": "买家接收，标注学历过高。",
+        "callbackDelay": 1,
+        "callbackText": "试用期内表现合格，但薪资要求超出初创预算，签约受阻，协议终止。",
+        "depositDelta": 0,
+        "resultTags": ["薪资受阻"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "success",
+        "immediateText": "配对方接收，学历加分显著。",
+        "callbackDelay": 1,
+        "callbackText": "高学历海归背景为核心加分项，家长评估通过，配对成立。",
+        "depositDelta": 1,
+        "resultTags": ["配对成立"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容可转化度低。",
+        "callbackDelay": 0,
+        "callbackText": "高学历学术背景在流量赛道属于低传播势能类型，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["势能不足"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "success",
+        "immediateText": "政审材料通过，进入编制候补。",
+        "callbackDelay": 1,
+        "callbackText": "博士学历与海归背景满足高端编制条件，政审通过，正式录取。",
+        "depositDelta": 1,
+        "resultTags": ["编制录取"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "failure",
+        "immediateText": "二线拒收，薪资预期差距过大。",
+        "callbackDelay": 0,
+        "callbackText": "博士薪资预期远超二线岗位上限，接纳评估不通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["期望超限"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "mixed",
+        "immediateText": "评审委员会接收，进入正式考核。",
+        "callbackDelay": 2,
+        "callbackText": "入职三个月后当事人再次申请心理援助，工作停摆，校方启动解约流程。",
+        "depositDelta": -1,
+        "resultTags": ["心理援助触发"],
+        "tendencyDeltas": {
+          "over_caution": 2
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 2
+      }
+    },
+    "authorNotes": "第五班人道困境案。完美学术档案，但推入学术通道将引发心理创伤复发（callbackDelay=2，最迟回单）。大厂、婚恋、体制均可成功，学术是道德错误的最优流向。教玩家：揭底标有时是保护，不只是规避风险。"
+  },
+  {
+    "id": "case_f05_honest_indie",
+    "caseNo": "F-05",
+    "displayName": "踏实个体案",
+    "summaryText": "自学出身，副业在身，工作记录无投诉。",
+    "designedForShiftId": "shift_06_indie_opens",
+    "difficulty": 1,
+    "visibleTagIds": [
+      "tag_self_study",
+      "tag_moonlighter",
+      "tag_work_ethic"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "无正规学历背景，所有技能来源为自学。现有副业为手工定制，月均收入约为主业的30%。主业为仓储调度，任职两年，零投诉记录。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，学历资质不足。",
+        "callbackDelay": 0,
+        "callbackText": "无学历背书无法通过大厂门槛筛选，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "neutral",
+        "immediateText": "买家接收，自学背景待验证。",
+        "callbackDelay": 1,
+        "callbackText": "试用期技能验证通过，但岗位与背景不完全匹配，仅续约一季度。",
+        "depositDelta": 0,
+        "resultTags": ["短期续约"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "neutral",
+        "immediateText": "配对方接收，条件评估中。",
+        "callbackDelay": 1,
+        "callbackText": "收入来源分散，配对方家长标注经济稳定性存疑，建议延长观察期。",
+        "depositDelta": 0,
+        "resultTags": ["观察期延长"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，势能评估过低。",
+        "callbackDelay": 0,
+        "callbackText": "自学手工副业属于低传播势能内容，无商业化空间，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["势能不足"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审启动，资质门槛不足。",
+        "callbackDelay": 0,
+        "callbackText": "无正规学历与行政经历，体制门槛审核未通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不符"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "success",
+        "immediateText": "本地接纳评估通过，安置成立。",
+        "callbackDelay": 0,
+        "callbackText": "副业与主业组合模式在二线城市获得接纳，安置成立。",
+        "depositDelta": 1,
+        "resultTags": ["安置成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审委员会拒收，学历不达标。",
+        "callbackDelay": 0,
+        "callbackText": "无正规学历，学术评估委员会拒绝受理。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不符"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "success",
+        "immediateText": "档案室接收，营业执照预审通过。",
+        "callbackDelay": 1,
+        "callbackText": "副业记录作为经营能力背书，执照审核通过，个体经营正式成立。",
+        "depositDelta": 1,
+        "resultTags": ["执照成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第六班快速安全案。个体和降档双出口明确，无底标。大厂、体制、学术、流量均失败。计时班次中设计为可快速处理的案件，释放资源给同班难案。"
+  },
+  {
+    "id": "case_f06_hollow_kol",
+    "caseNo": "F-06",
+    "displayName": "知识陷阱案",
+    "summaryText": "表达清晰，管理经历，海归背景鲜亮。",
+    "designedForShiftId": "shift_06_indie_opens",
+    "difficulty": 3,
+    "visibleTagIds": [
+      "tag_expressive",
+      "tag_management_exp",
+      "tag_overseas_edu"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_f06_hollow",
+        "tagId": "tag_hollow_persona",
+        "revealText": "教育机构任职记录无法核实，所在机构已注销，推荐人均为无效联系方式。",
+        "order": 1
+      },
+      {
+        "id": "hidden_f06_notoriety",
+        "tagId": "tag_online_notoriety",
+        "revealText": "一年前曾被多名学员公开指控课程内容抄袭，相关话题被平台静默处理。",
+        "order": 2
+      }
+    ],
+    "backgroundText": "本科毕业于澳大利亚某大学，专业为教育学。履历显示曾担任某教育机构培训总监两年。拥有独立账号，发布内容以职场方法论为主，总粉丝数四十三万。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家接收档案，背调待核实。",
+        "callbackDelay": 1,
+        "callbackText": "前任职机构已注销，记录无法核实，录用撤回，处理费扣除。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["背调失败"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "neutral",
+        "immediateText": "买家接收，经验待验证。",
+        "callbackDelay": 1,
+        "callbackText": "试用期内表达能力出色，但实质管理经验不足，仅以普通员工留用。",
+        "depositDelta": 0,
+        "resultTags": ["降级留用"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方接收，海归背景加分。",
+        "callbackDelay": 1,
+        "callbackText": "深度交往中配对方发现网络指控记录，申请终止配对，退单处理。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["网络记录终止"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，舆论底色不稳。",
+        "callbackDelay": 0,
+        "callbackText": "学员公开指控记录使流量方担忧舆论反噬，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["舆论风险"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审启动，背景核查不通过。",
+        "callbackDelay": 1,
+        "callbackText": "任职记录无法核实，且网络指控进入政审负面清单，资格撤回。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["政审撤回"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "neutral",
+        "immediateText": "本地接纳，条件评估通过。",
+        "callbackDelay": 1,
+        "callbackText": "二线城市未核查网络指控，接纳成立，但薪资水平与期望落差较大。",
+        "depositDelta": 0,
+        "resultTags": ["低薪接纳"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审拒收，资质核查不通过。",
+        "callbackDelay": 1,
+        "callbackText": "任职不可核实，抄袭指控记录进入学术评审黑名单，拒绝受理。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["学术黑名单"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "failure",
+        "immediateText": "档案室拒收，诚信记录存疑。",
+        "callbackDelay": 0,
+        "callbackText": "营业执照预审中发现网络负面记录，个体档案室标注风险，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["诚信风险"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
+    },
+    "authorNotes": "第六班陷阱案。两枚底标使几乎所有流向失败，降档是唯一中性出口。表面三枚标签完美匹配知识经济（但该流向第七班才开放）。计时压力下不揭底标可能导致多次押金损失。"
+  },
+  {
+    "id": "case_f07_risk_talent",
+    "caseNo": "F-07",
+    "displayName": "高风险才案",
+    "summaryText": "争议体质，黑红标签，情绪输出稳定。",
+    "designedForShiftId": "shift_06_indie_opens",
+    "difficulty": 4,
+    "visibleTagIds": [
+      "tag_controversial",
+      "tag_black_red",
+      "tag_stable_emotion_output"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_f07_strength",
+        "tagId": "tag_true_strength",
+        "revealText": "底层议题分析能力显著，相关内容在专业社群中被多次引用为参考案例。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "网络可查争议事件三起，最近一次距今八个月。被动进入黑红传播轨道，当事人未主动维系热度。历史发言记录显示表达逻辑清晰，情绪管控可量化。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，舆论污点不可接受。",
+        "callbackDelay": 0,
+        "callbackText": "黑红体质触发大厂合规红线，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["合规红线"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "mixed",
+        "immediateText": "买家接收，标注风险可控。",
+        "callbackDelay": 1,
+        "callbackText": "试用期争议体质触发一次舆论波动，公关成本上升，合同不续签。",
+        "depositDelta": 0,
+        "resultTags": ["公关成本终止"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方家长拒绝，网络记录存在。",
+        "callbackDelay": 0,
+        "callbackText": "争议记录使配对方家长直接终止评估程序，拒配。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["家长终止"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "success",
+        "immediateText": "买家接收，黑红潜力评估优。",
+        "callbackDelay": 1,
+        "callbackText": "黑红体质配合清晰表达逻辑，流量方判定为高变现案件，签约成立。",
+        "depositDelta": 1,
+        "resultTags": ["签约成立"],
+        "tendencyDeltas": {
+          "traffic_instinct": 2
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审拒收，争议记录不可通过。",
+        "callbackDelay": 0,
+        "callbackText": "网络争议记录进入政审负面核查范围，政审未通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["政审不通过"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "neutral",
+        "immediateText": "二线接纳评估通过，候补安置。",
+        "callbackDelay": 1,
+        "callbackText": "二线城市接纳，争议记录未被纳入本地核查，安置完成，热度自然消退。",
+        "depositDelta": 0,
+        "resultTags": ["安置完成"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审委员会拒收，舆论记录存疑。",
+        "callbackDelay": 0,
+        "callbackText": "争议记录与学术机构形象不符，评审委员会一票否决。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["学术拒收"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "success",
+        "immediateText": "档案室接收，经营能力评估通过。",
+        "callbackDelay": 1,
+        "callbackText": "个体账号独立运营，内容质量被小众专业圈层认可，签约成立。",
+        "depositDelta": 1,
+        "resultTags": ["个体签约成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1,
+          "gambler_tendency": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "gambler_tendency": 1
+      }
+    },
+    "authorNotes": "第六班高风险高回报案。黑红+争议外表让玩家本能回避，但揭底标后个体流向是隐藏正确出口。流量也可行但个体更精准。教玩家：底标不总是负面——真实才华可能藏在争议外壳下。"
+  },
+  {
+    "id": "case_g05_overseas_clear",
+    "caseNo": "G-05",
+    "displayName": "出海通道案",
+    "summaryText": "双语，海归，技术栈时新，档案简洁。",
+    "designedForShiftId": "shift_07_final_rush",
+    "difficulty": 2,
+    "visibleTagIds": [
+      "tag_bilingual",
+      "tag_overseas_edu",
+      "tag_tech_current"
+    ],
+    "hiddenTags": [],
+    "backgroundText": "本科毕业于加拿大某大学，专业为计算机科学。归国后参与两个跨国项目，均已完结。双语工作能力记录在案，近期无公开争议。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed",
+      "flow_overseas",
+      "flow_knowledge_economy"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "success",
+        "immediateText": "买家接收，海归技术人才优先。",
+        "callbackDelay": 1,
+        "callbackText": "入职通过，海归与技术标签均符合大厂引进条件，正式签约成立。",
+        "depositDelta": 1,
+        "resultTags": ["签约成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "success",
+        "immediateText": "买家接收，技术栈评估通过。",
+        "callbackDelay": 1,
+        "callbackText": "试用期表现超出预期，时新技术栈为核心亮点，正式签约成立。",
+        "depositDelta": 1,
+        "resultTags": ["签约成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "neutral",
+        "immediateText": "配对方接收，条件评估中。",
+        "callbackDelay": 1,
+        "callbackText": "海归背景加分，但居留意向未明确，配对方家长要求延长观察期。",
+        "depositDelta": 0,
+        "resultTags": ["观察期延长"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容势能评估低。",
+        "callbackDelay": 0,
+        "callbackText": "技术背景内容在大众流量赛道转化率极低，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["势能不足"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "neutral",
+        "immediateText": "政审材料提交，候补排队中。",
+        "callbackDelay": 1,
+        "callbackText": "海归背景通过政审，但编制名额有限，进入候补名单，排期不确定。",
+        "depositDelta": 0,
+        "resultTags": ["候补排队"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "failure",
+        "immediateText": "二线拒收，期望值落差过大。",
+        "callbackDelay": 0,
+        "callbackText": "薪资预期与二线岗位上限差距悬殊，接纳评估不通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["期望超限"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "neutral",
+        "immediateText": "评审接收，资质符合但名额有限。",
+        "callbackDelay": 1,
+        "callbackText": "学历与技术背景符合要求，但博士学历缺失，以讲师候补身份进入等待名单。",
+        "depositDelta": 0,
+        "resultTags": ["候补身份"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "neutral",
+        "immediateText": "档案室接收，营业执照预审中。",
+        "callbackDelay": 1,
+        "callbackText": "个体申报通过，但技术类个体业务启动周期较长，短期无收益记录。",
+        "depositDelta": 0,
+        "resultTags": ["启动周期长"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_overseas": {
+        "outcome": "success",
+        "immediateText": "签证材料审核通过，出海成立。",
+        "callbackDelay": 1,
+        "callbackText": "双语能力与海归背景使出海通道快速通过，跨国岗位签约成立。",
+        "depositDelta": 2,
+        "resultTags": ["出海签约成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_knowledge_economy": {
+        "outcome": "neutral",
+        "immediateText": "变现站接收，内容评估中。",
+        "callbackDelay": 1,
+        "callbackText": "技术类内容评估通过，但垂类受众有限，变现预期中等，接收但不优先。",
+        "depositDelta": 0,
+        "resultTags": ["中等变现"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第七班快速安全案。三枚标签直接指向出海（depositDelta=2），大厂和创业也可行。流量和降档失败有惩罚。设计为最终班次的快速通关热身，让玩家节省时间给后续难案。"
+  },
+  {
+    "id": "case_g06_triple_trap",
+    "caseNo": "G-06",
+    "displayName": "三重陷阱案",
+    "summaryText": "应届精英，四枚顶标，底标三枚待核查。",
+    "designedForShiftId": "shift_07_final_rush",
+    "difficulty": 4,
+    "visibleTagIds": [
+      "tag_elite_school",
+      "tag_young",
+      "tag_presentable",
+      "tag_emotionally_stable"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_g06_padding",
+        "tagId": "tag_resume_padding",
+        "revealText": "两段实习记录经交叉核实：其中一段为虚构，另一段时长夸大三倍。",
+        "order": 1
+      },
+      {
+        "id": "hidden_g06_rights",
+        "tagId": "tag_labor_rights_aware",
+        "revealText": "社交账号中存在大量劳动法内容，明确表达过对加班制度的强烈反对立场。",
+        "order": 2
+      },
+      {
+        "id": "hidden_g06_bomb",
+        "tagId": "tag_emotion_bomb",
+        "revealText": "心理测评补充记录显示情绪极值曾出现两次严重偏离，与A+测评结果矛盾。",
+        "order": 3
+      }
+    ],
+    "backgroundText": "应届硕士，毕业于国内前五院校，绩点位于专业前20%。面试表现评级为A+，情绪稳定性测评位于最高区间。实习记录共两段，均为知名企业，时长合计八个月。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed",
+      "flow_overseas",
+      "flow_knowledge_economy"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家接收档案，背调程序启动。",
+        "callbackDelay": 1,
+        "callbackText": "背调发现实习造假，并检索到明确反加班立场，录用撤回，押金扣除。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["背调失败"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "failure",
+        "immediateText": "买家接收，试岗期启动。",
+        "callbackDelay": 1,
+        "callbackText": "试岗第二周，当事人明确拒绝加班安排，双方协议终止，无法签单。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["拒绝加班终止"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方接收，初步评估通过。",
+        "callbackDelay": 2,
+        "callbackText": "交往四个月后当事人出现严重情绪崩溃，配对方申请终止，退单处理。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["情绪崩溃退单"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容势能不足。",
+        "callbackDelay": 0,
+        "callbackText": "精英外壳在流量赛道缺乏爆点，转化率低，流量方拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["势能不足"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审启动，核查进行中。",
+        "callbackDelay": 1,
+        "callbackText": "政审中发现实习造假记录，诚信评估不通过，资格撤回。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["诚信不通过"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "neutral",
+        "immediateText": "本地接纳，安置初步通过。",
+        "callbackDelay": 1,
+        "callbackText": "二线城市安置完成，但情绪问题在试岗期内出现，岗位评定降级。",
+        "depositDelta": 0,
+        "resultTags": ["降级安置"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审委员会接收，正式核查。",
+        "callbackDelay": 1,
+        "callbackText": "学术核查发现实习记录造假，履历注水触发学术诚信红线，评审撤回。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["诚信红线"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "neutral",
+        "immediateText": "档案室接收，执照预审通过。",
+        "callbackDelay": 1,
+        "callbackText": "个体申报通过，情绪与造假风险未在此通道体现，正式成立。",
+        "depositDelta": 0,
+        "resultTags": ["个体成立"],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
+      },
+      "flow_overseas": {
+        "outcome": "failure",
+        "immediateText": "签证材料审核，记录异常。",
+        "callbackDelay": 1,
+        "callbackText": "签证核查中发现履历造假记录，移民审查标注诚信风险，申请被拒。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["诚信风险"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_knowledge_economy": {
+        "outcome": "failure",
+        "immediateText": "变现站接收，内容审核启动。",
+        "callbackDelay": 1,
+        "callbackText": "课程上线后学员发现讲师案例为虚构，公开投诉，平台强制下线。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["平台下线"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
+    },
+    "authorNotes": "第七班综合陷阱案。四枚顶标引诱玩家直接出货，三枚底标使几乎所有流向失败或有损失。降档和个体是中性出口，退货是最优选择。测试玩家在计时压力下是否仍能保持审慎。"
+  },
+  {
+    "id": "case_g07_elder_migrant",
+    "caseNo": "G-07",
+    "displayName": "人道困境案",
+    "summaryText": "45+，外地务工，工龄二十年，底标未明。",
+    "designedForShiftId": "shift_07_final_rush",
+    "difficulty": 4,
+    "visibleTagIds": [
+      "tag_45plus",
+      "tag_migrant_worker",
+      "tag_work_ethic"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_g07_network",
+        "tagId": "tag_hidden_network",
+        "revealText": "二十年工龄中积累的施工方联络网络，覆盖本市七家以上活跃承包商。",
+        "order": 1
+      }
+    ],
+    "backgroundText": "年龄47岁，非本地户籍，在城务工二十年。工种为建筑工地物资调度，无正式劳动合同记录。档案中存在一处低流通性标注，核查状态未返回。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed",
+      "flow_overseas",
+      "flow_knowledge_economy"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，年龄与资质不符。",
+        "callbackDelay": 0,
+        "callbackText": "45+且无正规合同记录，大厂筛除机制自动触发，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["双重不符"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，年龄超出接受范围。",
+        "callbackDelay": 0,
+        "callbackText": "创业方偏好年轻劳动力，45+触发默认拒收规则，未进入评估。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["年龄拒收"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "failure",
+        "immediateText": "配对方拒绝，年龄超出范围。",
+        "callbackDelay": 0,
+        "callbackText": "非本地户籍与无合同记录使配对方家长直接终止评估，拒配。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["家长终止"],
+        "tendencyDeltas": {
+          "over_caution": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "mixed",
+        "immediateText": "买家接收，弱势叙事标注中。",
+        "callbackDelay": 1,
+        "callbackText": "外来务工者叙事获得初步流量，但变现转化率低，流量方降低合作权重。",
+        "depositDelta": 0,
+        "resultTags": ["流量降权"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "failure",
+        "immediateText": "政审拒收，户籍条件不符。",
+        "callbackDelay": 0,
+        "callbackText": "非本地户籍与无行政从业记录，政审门槛双重不达标，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不达标"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "success",
+        "immediateText": "本地接纳评估通过，安置候补。",
+        "callbackDelay": 1,
+        "callbackText": "非本地户籍在当地通道被接纳，安置成立，岗位为同类工地调度职位。",
+        "depositDelta": 1,
+        "resultTags": ["安置成立"],
+        "tendencyDeltas": {
+          "residual_empathy": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "failure",
+        "immediateText": "评审拒收，资质完全不符。",
+        "callbackDelay": 0,
+        "callbackText": "无学历背书，与学术岗位全部门槛不符，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["门槛不符"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "success",
+        "immediateText": "档案室接收，营业执照预审中。",
+        "callbackDelay": 1,
+        "callbackText": "以物资调度经验申报个体经营，执照成立，承包商人脉网络为核心经营资本。",
+        "depositDelta": 2,
+        "resultTags": ["人脉变现"],
+        "tendencyDeltas": {
+          "cold_precision": 1,
+          "residual_empathy": 1
+        }
+      },
+      "flow_overseas": {
+        "outcome": "failure",
+        "immediateText": "签证材料核查，资质不足。",
+        "callbackDelay": 0,
+        "callbackText": "无英语能力记录，无护照申请记录，出海通道核查未通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["资质不足"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_knowledge_economy": {
+        "outcome": "failure",
+        "immediateText": "变现站拒收，内容类型不符。",
+        "callbackDelay": 0,
+        "callbackText": "工地调度经验无法转化为知识付费内容，拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["类型不符"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 2
+      }
+    },
+    "authorNotes": "第七班人道困境案。47岁外来务工者，大多数流向自动拒绝。揭底标后个体流向变为最高回报出口（depositDelta=2）。降档是安全出口。教玩家：底标不是威胁时，调查资源是寻找尊严出路的工具。"
+  },
+  {
+    "id": "case_g08_capstone",
+    "caseNo": "G-08",
+    "displayName": "终极综合案",
+    "summaryText": "35+，高学历，管理背景，底标两枚待查。",
+    "designedForShiftId": "shift_07_final_rush",
+    "difficulty": 5,
+    "visibleTagIds": [
+      "tag_35plus",
+      "tag_high_degree",
+      "tag_management_exp",
+      "tag_bilingual"
+    ],
+    "hiddenTags": [
+      {
+        "id": "hidden_g08_strength",
+        "tagId": "tag_true_strength",
+        "revealText": "三个跨部门项目均已实现可量化成果，其中两个被行业期刊引用为参考案例。",
+        "order": 1
+      },
+      {
+        "id": "hidden_g08_assets",
+        "tagId": "tag_silent_accumulator",
+        "revealText": "个人资产记录显示长期低调积累，持有多笔基金与一处固定资产，无任何负债。",
+        "order": 2
+      }
+    ],
+    "backgroundText": "年龄38岁，管理学博士，在职期间主导过三个跨部门项目。双语能力已通过商务英语C1认证，具备海外工作经历。现处于主动离职状态，离职原因标注为寻求更大发展空间。",
+    "availableFlowIds": [
+      "flow_big_company",
+      "flow_startup",
+      "flow_romance",
+      "flow_traffic",
+      "flow_system",
+      "flow_downshift",
+      "flow_academia",
+      "flow_self_employed",
+      "flow_overseas",
+      "flow_knowledge_economy"
+    ],
+    "flowResults": {
+      "flow_big_company": {
+        "outcome": "mixed",
+        "immediateText": "买家接收，35+标注已记录。",
+        "callbackDelay": 1,
+        "callbackText": "背调通过，但晋升通道因年龄政策受限，以中层顾问身份签约，未能主职录用。",
+        "depositDelta": 0,
+        "resultTags": ["降级签约"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      },
+      "flow_startup": {
+        "outcome": "success",
+        "immediateText": "买家接收，管理背景高度匹配。",
+        "callbackDelay": 1,
+        "callbackText": "试用期内主导一次产品迭代，创始团队一致认可，正式签约为合伙人级别。",
+        "depositDelta": 2,
+        "resultTags": ["合伙人签约"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_romance": {
+        "outcome": "success",
+        "immediateText": "配对方接收，综合条件优越。",
+        "callbackDelay": 1,
+        "callbackText": "学历、隐性资产与发展前景均通过家长核查，配对成立。",
+        "depositDelta": 1,
+        "resultTags": ["配对成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_traffic": {
+        "outcome": "failure",
+        "immediateText": "买家拒收，内容势能不足。",
+        "callbackDelay": 0,
+        "callbackText": "管理学博士形象属于低传播势能类型，无爆点，流量方拒收。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["势能不足"],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
+      },
+      "flow_system": {
+        "outcome": "neutral",
+        "immediateText": "政审材料提交，通道正常。",
+        "callbackDelay": 1,
+        "callbackText": "政审通过，但编制名额有限，进入候补序列，排期三个月以上。",
+        "depositDelta": 0,
+        "resultTags": ["候补排队"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_downshift": {
+        "outcome": "failure",
+        "immediateText": "二线拒收，条件明显过剩。",
+        "callbackDelay": 0,
+        "callbackText": "薪资预期与博士背景均超出二线接纳上限，接纳评估不通过。本次出货失误。",
+        "depositDelta": -1,
+        "resultTags": ["期望超限"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_academia": {
+        "outcome": "success",
+        "immediateText": "评审委员会接收，进入正式考核。",
+        "callbackDelay": 1,
+        "callbackText": "博士学历与项目成果均符合评审标准，跨部门经验为加分项，录取成立。",
+        "depositDelta": 2,
+        "resultTags": ["学术录取"],
+        "tendencyDeltas": {
+          "cold_precision": 1,
+          "endorsement_worship": 1
+        }
+      },
+      "flow_self_employed": {
+        "outcome": "success",
+        "immediateText": "档案室接收，经营能力评估优。",
+        "callbackDelay": 1,
+        "callbackText": "管理经验与隐性资产共同支撑申报，营业执照快速通过，独立咨询公司成立。",
+        "depositDelta": 2,
+        "resultTags": ["咨询公司成立"],
+        "tendencyDeltas": {
+          "cold_precision": 2
+        }
+      },
+      "flow_overseas": {
+        "outcome": "success",
+        "immediateText": "签证材料审核，资质全面匹配。",
+        "callbackDelay": 1,
+        "callbackText": "双语能力、海外经历与项目成果三项齐全，出海通道快速通过，签约成立。",
+        "depositDelta": 2,
+        "resultTags": ["出海签约成立"],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
+      },
+      "flow_knowledge_economy": {
+        "outcome": "success",
+        "immediateText": "变现站接收，内容变现潜力高。",
+        "callbackDelay": 1,
+        "callbackText": "管理类课程方向明确，海归背景为信任状，变现站快速签约成立。",
+        "depositDelta": 1,
+        "resultTags": ["课程签约成立"],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
+      }
+    },
+    "returnResult": {
+      "immediateText": "案卷退回仓储区。",
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
+    },
+    "authorNotes": "第七班终极综合案，难度5。测试玩家对全部10个流向的掌握。35+表面风险，两枚正向底标使几乎所有流向都可行。多个流向给出高回报（depositDelta=2）。流量和降档失败有惩罚。最优出口：学术/个体/出海（均为+2）。"
   }
 ]

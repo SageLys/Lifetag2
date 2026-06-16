@@ -9,7 +9,8 @@
     "caseIds": [
       "case_a01_fresh_elite",
       "case_a02_middle_stable",
-      "case_a03_migrant_worker"
+      "case_a03_migrant_worker",
+      "case_a04_reliable_tech"
     ],
     "nextShiftId": "shift_02_romance_opens",
     "availableActionIds": [
@@ -73,7 +74,8 @@
     "caseIds": [
       "case_b01_debt_beauty",
       "case_b02_settled_adult",
-      "case_b03_psych_hidden"
+      "case_b03_psych_hidden",
+      "case_b04_polished_trap"
     ],
     "nextShiftId": "shift_03_traffic_opens",
     "availableActionIds": [
@@ -132,13 +134,15 @@
     "id": "shift_03_traffic_opens",
     "order": 3,
     "displayName": "第三班：流量入场",
-    "introText": "流量变现池今日开始接件。请注意，流量柜台的审美标准与其他柜台不在同一坐标系内。欢迎开拓思路。",
-    "objectiveText": "处理全部到货案件。本班起未处理案件将自动退货，请自行规划优先顺序。",
+    "introText": "流量变现池今日开始接件。注意：本班起启用计时制，计时仅在您处理案件期间运行，过渡画面与回单查看期间自动暂停。计时归零时，未处理案件将自动退货并计入绩效。请注意流量柜台的评估逻辑与其他柜台不在同一坐标系内。",
+    "objectiveText": "在限定时间内处理到货案件，至少完成 3 单有效出货。资源有限，请优先处理您有把握的案件。",
     "summaryTitle": "第三班收班记录",
     "caseIds": [
       "case_c01_banned_influencer",
       "case_c02_single_mother",
-      "case_c03_black_red_persona"
+      "case_c03_black_red_persona",
+      "case_c04_viral_obvious",
+      "case_c05_single_parent_debt"
     ],
     "nextShiftId": "shift_04_system_opens",
     "availableActionIds": [
@@ -156,9 +160,9 @@
       "flow_traffic"
     ],
     "resources": {
-      "investigationPoints": 2,
+      "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": null
+      "timeRemainingSeconds": 240
     },
     "actionCosts": {
       "inspectCase": {
@@ -183,7 +187,7 @@
       {
         "id": "perf_shift03_min_ship",
         "type": "min_shipped_cases",
-        "target": 2,
+        "target": 3,
         "depositDelta": -1,
         "failText": "本班出货数量不足，系统判定本班绩效未达标。押金标签扣除 1 枚。",
         "passText": "本班出货达标。"
@@ -198,13 +202,15 @@
     "id": "shift_04_system_opens",
     "order": 4,
     "displayName": "第四班：体制与降档",
-    "introText": "体制内编制局与二线回收站今日同步开放接件。请操盘员注意：两个新柜台偏好稳定型案件，但各有侧重，请自行区分。",
-    "objectiveText": "处理到货案件，至少出货 3 单。资源有限，请审慎分配调查机会。",
+    "introText": "体制内编制局与二线回收站今日同步开放接件。两个新柜台偏好稳定型案件，但各有侧重，请自行区分。计时制继续运行，计时归零时未处理案件自动退货。",
+    "objectiveText": "在限定时间内处理到货案件，至少出货 3 单。资源有限，请审慎分配调查机会。",
     "summaryTitle": "第四班收班记录",
     "caseIds": [
       "case_d01_awakened_cadre",
       "case_d02_veteran_worker",
-      "case_d03_overseas_returnee"
+      "case_d03_overseas_returnee",
+      "case_d04_hometown_return",
+      "case_d05_cadre_lawsuit"
     ],
     "nextShiftId": "shift_05_academia_opens",
     "availableActionIds": [
@@ -226,7 +232,7 @@
     "resources": {
       "investigationPoints": 2,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": null
+      "timeRemainingSeconds": 210
     },
     "actionCosts": {
       "inspectCase": {
@@ -266,14 +272,16 @@
     "id": "shift_05_academia_opens",
     "order": 5,
     "displayName": "第五班：象牙塔接件",
-    "introText": "象牙塔招聘组今日开放接件。提醒：学术柜台的审核周期最长，标准最窄，请操盘员注意评估精准度。",
-    "objectiveText": "处理到货案件。本班含高难度案件，误判风险上升，请合理使用调查机会。",
+    "introText": "象牙塔招聘组今日开放接件。提醒：学术柜台审核周期最长，标准最窄，误判成本高。计时制继续运行，本班案件数量增加，请注意优先顺序。",
+    "objectiveText": "在限定时间内处理到货案件，至少出货 4 单。本班含高难度案件，误判风险上升，请合理使用调查机会。",
     "summaryTitle": "第五班收班记录",
     "caseIds": [
       "case_e01_burnout_professor",
       "case_e02_mid_life_pivot",
       "case_e03_housewife_return",
-      "case_e04_gen_z_dropout"
+      "case_e04_gen_z_dropout",
+      "case_e05_hopper_z",
+      "case_e06_scholar_trauma"
     ],
     "nextShiftId": "shift_06_indie_opens",
     "availableActionIds": [
@@ -294,9 +302,9 @@
       "flow_academia"
     ],
     "resources": {
-      "investigationPoints": 2,
+      "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": null
+      "timeRemainingSeconds": 210
     },
     "actionCosts": {
       "inspectCase": {
@@ -321,7 +329,7 @@
       {
         "id": "perf_shift05_min_ship",
         "type": "min_shipped_cases",
-        "target": 3,
+        "target": 4,
         "depositDelta": -1,
         "failText": "本班出货数量未达目标，押金标签扣除 1 枚。",
         "passText": "本班出货数量达标。"
@@ -336,14 +344,17 @@
     "id": "shift_06_indie_opens",
     "order": 6,
     "displayName": "第六班：个体与知识变现",
-    "introText": "个体工商档案室与知识付费变现站今日开放接件。系统提示：本批案件底标密度较高，请操盘员自行判断是否值得调查。",
-    "objectiveText": "处理到货案件。押金储备有限，高风险案件请谨慎出货。",
+    "introText": "个体工商档案室与知识付费变现站今日开放接件。系统提示：本批案件底标密度较高，请自行判断调查资源是否值得使用。计时压力持续，请优先处理判断明确的案件。",
+    "objectiveText": "在限定时间内处理到货案件，至少出货 4 单。押金储备有限，高风险案件请谨慎出货。",
     "summaryTitle": "第六班收班记录",
     "caseIds": [
       "case_f01_freelance_consultant",
       "case_f02_ex_executive",
       "case_f03_rural_returnee",
-      "case_f04_labor_hero"
+      "case_f04_labor_hero",
+      "case_f05_honest_indie",
+      "case_f06_hollow_kol",
+      "case_f07_risk_talent"
     ],
     "nextShiftId": "shift_07_final_rush",
     "availableActionIds": [
@@ -367,7 +378,7 @@
     "resources": {
       "investigationPoints": 2,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": null
+      "timeRemainingSeconds": 210
     },
     "actionCosts": {
       "inspectCase": {
@@ -392,7 +403,7 @@
       {
         "id": "perf_shift06_min_ship",
         "type": "min_shipped_cases",
-        "target": 3,
+        "target": 4,
         "depositDelta": -1,
         "failText": "本班出货数量未达目标，押金标签扣除 1 枚。",
         "passText": "本班出货数量达标。"
@@ -407,14 +418,18 @@
     "id": "shift_07_final_rush",
     "order": 7,
     "displayName": "第七班：最后的流通日",
-    "introText": "今日为试用期最终班次。全部流向柜台同步开放。系统提示：本班结束后将进入试用期终审程序，请操盘员做好准备。",
-    "objectiveText": "处理本班全部案件。本班为试用期最终考核，出货精准度将影响试用期最终评定。",
+    "introText": "今日为试用期最终班次。全部流向柜台同步开放。系统提示：本班结束后将进入试用期终审程序，请操盘员做好准备。计时压力为全程最高，案件数量为全程最多，请合理规划优先顺序。",
+    "objectiveText": "在限定时间内处理到货案件，至少出货 4 单。本班为试用期最终考核，出货精准度将影响试用期最终评定。",
     "summaryTitle": "试用期终班记录",
     "caseIds": [
       "case_g01_successful_failure",
       "case_g02_hidden_wealth",
       "case_g03_pua_survivor",
-      "case_g04_overseas_limbo"
+      "case_g04_overseas_limbo",
+      "case_g05_overseas_clear",
+      "case_g06_triple_trap",
+      "case_g07_elder_migrant",
+      "case_g08_capstone"
     ],
     "nextShiftId": null,
     "availableActionIds": [
@@ -440,7 +455,7 @@
     "resources": {
       "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": null
+      "timeRemainingSeconds": 200
     },
     "actionCosts": {
       "inspectCase": {
@@ -465,7 +480,7 @@
       {
         "id": "perf_shift07_min_ship",
         "type": "min_shipped_cases",
-        "target": 3,
+        "target": 4,
         "depositDelta": -1,
         "failText": "最终班次出货数量未达标，押金标签扣除 1 枚。",
         "passText": "最终班次出货达标。试用期考核数据已封存。"

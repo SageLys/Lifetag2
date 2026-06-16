@@ -195,6 +195,87 @@ function zeroStats() {
     performancePenalties:0, depositLostTotal:0 };
 }
 
+function shiftTimerConfig(shift) {
+  const raw = shift.timeLimit || shift.timer || {};
+  const resourceSeconds = shift.resources ? shift.resources.timeRemainingSeconds : null;
+  const duration = raw.durationSeconds != null ? raw.durationSeconds
+    : raw.timeRemainingSeconds != null ? raw.timeRemainingSeconds
+    : resourceSeconds;
+  const warningRaw = raw.warningThresholdSeconds || raw.warningThresholdsSeconds || raw.warningThresholds || [];
+  const warnings = Array.isArray(warningRaw) ? warningRaw
+    : (warningRaw == null ? [] : [warningRaw]);
+  return {
+    enabled: duration != null,
+    durationSeconds: duration,
+    timeoutPolicy: raw.timeoutPolicy || raw.timeoutHandling || shift.rules.unprocessedCasePolicy || 'auto_return',
+    warningThresholdSeconds: warnings.filter(v => typeof v === 'number' && v > 0).sort((a, b) => b - a)
+  };
+}
+
+function createShiftTimer(shift) {
+  const cfg = shiftTimerConfig(shift);
+  if (!cfg.enabled) {
+    return { enabled:false, totalSeconds:null, remainingSeconds:null, running:false,
+      expired:false, hasStarted:false, warningThresholdSeconds:[], warnedThresholdSeconds:[] };
+  }
+  return {
+    enabled: true,
+    totalSeconds: cfg.durationSeconds,
+    remainingSeconds: cfg.durationSeconds,
+    timeoutPolicy: cfg.timeoutPolicy,
+    running: false,
+    expired: false,
+    hasStarted: false,
+    warningThresholdSeconds: cfg.warningThresholdSeconds,
+    warnedThresholdSeconds: []
+  };
+}
+
+function syncTimerResource(state) {
+  if (!state || !state.shiftTimer || !state.shiftTimer.enabled) return;
+  state.resources.timeRemainingSeconds = Math.max(0, Math.ceil(state.shiftTimer.remainingSeconds));
+}
+
+function formatTime(seconds) {
+  if (seconds == null) return '--:--';
+  const s = Math.max(0, Math.ceil(seconds));
+  const m = Math.floor(s / 60);
+  const r = s % 60;
+  return String(m).padStart(2, '0') + ':' + String(r).padStart(2, '0');
+}
+
+function updateShiftTimer(state, dt) {
+  if (!state || !state.shiftTimer || !state.shiftTimer.enabled) return;
+  if (state.phase !== 'SHIFT_ACTIVE' || !state.shiftTimer.running || state.shiftTimer.expired) return;
+  state.shiftTimer.remainingSeconds = Math.max(0, state.shiftTimer.remainingSeconds - dt);
+  syncTimerResource(state);
+  for (const threshold of state.shiftTimer.warningThresholdSeconds) {
+    if (state.shiftTimer.remainingSeconds <= threshold && !state.shiftTimer.warnedThresholdSeconds.includes(threshold)) {
+      state.shiftTimer.warnedThresholdSeconds.push(threshold);
+      logEvent(state, 'shift_timer_warning', '限时警告 ' + formatTime(threshold), {
+        payload: { thresholdSeconds: threshold, remainingSeconds: state.shiftTimer.remainingSeconds }
+      });
+    }
+  }
+  if (state.shiftTimer.remainingSeconds <= 0) expireShiftTimer(state);
+}
+
+function expireShiftTimer(state) {
+  if (!state || !state.shiftTimer || state.shiftTimer.expired) return;
+  state.shiftTimer.expired = true;
+  state.shiftTimer.running = false;
+  state.shiftTimer.remainingSeconds = 0;
+  syncTimerResource(state);
+  UI.drag.state = 'IDLE';
+  UI.hoveredZone = null;
+  UI.activeCard = null;
+  logEvent(state, 'shift_timer_expired', '限时归零，强制收班 ' + state.currentShiftId, {
+    payload: { timeoutPolicy: state.shiftTimer.timeoutPolicy, activeCaseIds: state.activeCaseIds.slice() }
+  });
+  showToast('限时归零，系统强制收班');
+  endShift(state, { forcedByTimeout: true });
+}
+
 function logEvent(state, eventType, message, extra) {
   extra = extra || {};
   state.eventLog.push({
@@ -216,6 +297,8 @@ function newPlayerState() {
     selectedCaseId: null, activeCaseIds: [], runtimeCases: {},
     pendingCallbacks: [], readyCallbackIds: [],
     shiftStats: { shipped:0, returned:0, autoReturned:0 },
+    shiftTimer: { enabled:false, totalSeconds:null, remainingSeconds:null, running:false,
+      expired:false, hasStarted:false, warningThresholdSeconds:[], warnedThresholdSeconds:[] },
     tendencies: zeroTendencies(),
     stats: zeroStats(), lastActionResult: null, finalReport: null,
     shiftSummary: null, reviewQueue: [],
@@ -223,7 +306,18 @@ function newPlayerState() {
   };
 }
 
-function setPhase(state, phase) { state.phase = phase; }
+function setPhase(state, phase) {
+  state.phase = phase;
+  if (!state.shiftTimer || !state.shiftTimer.enabled || state.shiftTimer.expired) return;
+  const shouldRun = phase === 'SHIFT_ACTIVE';
+  if (shouldRun && !state.shiftTimer.hasStarted) {
+    state.shiftTimer.hasStarted = true;
+    logEvent(state, 'shift_timer_started', '限时开始 ' + formatTime(state.shiftTimer.remainingSeconds), {
+      payload: { remainingSeconds: state.shiftTimer.remainingSeconds }
+    });
+  }
+  state.shiftTimer.running = shouldRun;
+}
 
 function actionCost(state, actionId) {
   const shift = shiftsById[state.currentShiftId];
@@ -303,6 +397,7 @@ function enterShift(state, shiftId) {
   state.currentShiftId = shiftId;
   state.currentShiftOrder = shift.order;
   state.resources = Object.assign(clone(GAMECONFIG.defaultShiftResources), clone(shift.resources));
+  state.shiftTimer = createShiftTimer(shift);
   state.activeCaseIds = shift.caseIds.slice();
   state.selectedCaseId = null;
   state.shiftStats = { shipped:0, returned:0, autoReturned:0 };
@@ -330,6 +425,15 @@ function enterShift(state, shiftId) {
     }
   }
   logEvent(state, 'shift_entered', '进入班次 ' + shiftId);
+  if (state.shiftTimer.enabled) {
+    logEvent(state, 'shift_timer_initialized', '限时班次初始化 ' + formatTime(state.shiftTimer.remainingSeconds), {
+      payload: {
+        totalSeconds: state.shiftTimer.totalSeconds,
+        timeoutPolicy: state.shiftTimer.timeoutPolicy,
+        warningThresholdSeconds: state.shiftTimer.warningThresholdSeconds
+      }
+    });
+  }
   state._mascotPending = true;   // §6.4 每班开始时显示一次
   setPhase(state, 'SHIFT_START');
   buildScene(state);
@@ -342,6 +446,12 @@ function beginShiftWork(state) {
     enterCallbackReview(state, 'CALLBACK_REVIEW');
   } else {
     setPhase(state, 'SHIFT_ACTIVE');
+  }
+  if (state.phase === 'SHIFT_ACTIVE' && state.shiftTimer.enabled && !state.shiftTimer.running && !state.shiftTimer.expired) {
+    state.shiftTimer.running = true;
+    logEvent(state, 'shift_timer_started', '限时开始 ' + formatTime(state.shiftTimer.remainingSeconds), {
+      payload: { remainingSeconds: state.shiftTimer.remainingSeconds }
+    });
   }
 }
 
@@ -372,6 +482,7 @@ function enterCallbackReview(state, phase) {
     ids = state.readyCallbackIds.slice();
   }
   state.reviewQueue = sortCallbacks(state, ids);
+  if (state.shiftTimer && state.shiftTimer.enabled) state.shiftTimer.running = false;
   setPhase(state, phase);
 }
 
@@ -597,15 +708,17 @@ function canEndShift(state) {
   if (shift.rules.unprocessedCasePolicy === 'block_end' && state.activeCaseIds.length > 0) return false;
   return true;
 }
-function endShift(state) {
+function endShift(state, opts) {
+  opts = opts || {};
   if (state.phase !== 'SHIFT_ACTIVE') return fail(state, '当前不可收班');
   const shift = shiftsById[state.currentShiftId];
   const policy = shift.rules.unprocessedCasePolicy;
-  if (policy === 'block_end' && state.activeCaseIds.length > 0)
+  const forcedByTimeout = !!opts.forcedByTimeout;
+  if (!forcedByTimeout && policy === 'block_end' && state.activeCaseIds.length > 0)
     return fail(state, '仍有未处理案件，无法收班');
 
   // 自动退货
-  if (policy === 'auto_return') {
+  if (forcedByTimeout || policy === 'auto_return') {
     const remaining = state.activeCaseIds.slice();
     for (const id of remaining) {
       const cs = casesById[id];
@@ -647,9 +760,12 @@ function endShift(state) {
     title: shift.summaryTitle || shift.displayName,
     shipped: state.shiftStats.shipped, returned: state.shiftStats.returned,
     autoReturned: state.shiftStats.autoReturned, perfResults,
-    depositRemaining: state.depositTags.current
+    depositRemaining: state.depositTags.current,
+    forcedByTimeout
   };
-  logEvent(state, 'shift_ended', '收班 ' + state.currentShiftId);
+  logEvent(state, 'shift_ended', (forcedByTimeout ? '超时强制收班 ' : '收班 ') + state.currentShiftId, {
+    payload: { forcedByTimeout }
+  });
   setPhase(state, 'SHIFT_SUMMARY');
   return { ok:true };
 }
@@ -727,11 +843,29 @@ function validateData() {
   uniq(DATA.tags, 'tags'); uniq(DATA.flows, 'flows'); uniq(DATA.cases, 'cases'); uniq(DATA.shifts, 'shifts'); uniq(DATA.endings, 'endings');
   if (!shiftsById[GAMECONFIG.firstShiftId]) E('firstShiftId 不存在: ' + GAMECONFIG.firstShiftId);
   if (!DATA.endings.find(e => e.id === GAMECONFIG.defaultEndingId)) E('defaultEndingId 不存在: ' + GAMECONFIG.defaultEndingId);
+  for (const actionId in (GAMECONFIG.defaultActionCosts || {})) {
+    if (Object.prototype.hasOwnProperty.call(GAMECONFIG.defaultActionCosts[actionId] || {}, 'timeSeconds'))
+      E('gameConfig.defaultActionCosts.' + actionId + '.timeSeconds 已废弃，请使用真实倒计时');
+  }
   for (const sh of DATA.shifts) {
     if (sh.nextShiftId && !shiftsById[sh.nextShiftId]) E(sh.id + '.nextShiftId 不存在: ' + sh.nextShiftId);
     for (const cid of sh.caseIds) if (!casesById[cid]) E(sh.id + '.caseIds 缺失: ' + cid);
     for (const fid of sh.availableFlowIds) if (!flowsById[fid]) E(sh.id + '.availableFlowIds 缺失: ' + fid);
     for (const aid of sh.availableActionIds) if (!ACTION_IDS.includes(aid)) E(sh.id + ' 非法操作: ' + aid);
+    const timerCfg = shiftTimerConfig(sh);
+    if (timerCfg.enabled) {
+      if (typeof timerCfg.durationSeconds !== 'number' || !Number.isFinite(timerCfg.durationSeconds) || timerCfg.durationSeconds <= 0)
+        E(sh.id + '.timeRemainingSeconds 限时时长非法');
+      if (!['auto_return','block_end','ignore','force_end'].includes(timerCfg.timeoutPolicy))
+        E(sh.id + '.timeoutPolicy 非法: ' + timerCfg.timeoutPolicy);
+      for (const threshold of timerCfg.warningThresholdSeconds) {
+        if (threshold >= timerCfg.durationSeconds) E(sh.id + '.warningThresholdSeconds 必须小于限时时长: ' + threshold);
+      }
+    }
+    for (const actionId in (sh.actionCosts || {})) {
+      if (Object.prototype.hasOwnProperty.call(sh.actionCosts[actionId] || {}, 'timeSeconds'))
+        E(sh.id + '.actionCosts.' + actionId + '.timeSeconds 已废弃，请使用真实倒计时');
+    }
     for (const cid of sh.caseIds) {
       const cs = casesById[cid]; if (!cs) continue;
       const inter = sh.availableFlowIds.filter(f => cs.availableFlowIds.includes(f) && cs.flowResults[f]);
@@ -770,7 +904,8 @@ const UI = {
   toast: null,               // {text, t}
   mascotBubble: null,        // §6.4 标宝偶发台词气泡 {text,t}
   flowZones: [],
-  mouse: { x: 0, y: 0 }
+  mouse: { x: 0, y: 0 },
+  elapsed: 0             // 累计秒数，用于闪烁动画
 };
 // §6.4 标宝语录（Shell 层装饰文案，企业宣传口吻）
 const MASCOT_LINES = [
@@ -838,6 +973,7 @@ function updateAnims(dt) {
   if (UI.revealPop) { UI.revealPop.t += dt / 0.35; if (UI.revealPop.t >= 1) UI.revealPop = null; }
   if (UI.toast) { UI.toast.t += dt; if (UI.toast.t > 2.4) UI.toast = null; }
   if (UI.mascotBubble) { UI.mascotBubble.t += dt; if (UI.mascotBubble.t > 6.5) UI.mascotBubble = null; }
+  UI.elapsed += dt;
 }
 
 // ============================================================
@@ -898,11 +1034,31 @@ function drawStatusBar(state) {
 
   const order = state ? state.currentShiftOrder : 1;
   ctx.fillStyle = '#FFFFFF'; ctx.font = '11px "Press Start 2P"';
-  ctx.fillText('第 ' + order + ' 班', 226, 24);
-  ctx.fillStyle = 'rgba(255,255,255,0.7)'; ctx.font = '9px "Press Start 2P"';
-  ctx.fillText('DAY ' + order, 226, 42);
+  ctx.fillText('第 ' + order + ' 班', 226, 22);
 
-  const ledX = 360, ledY = 8, ledW = 660, ledH = 36;
+  if (state && state.shiftTimer && state.shiftTimer.enabled) {
+    const rem = state.shiftTimer.remainingSeconds;
+    const isUrgent  = rem <= 30;
+    const isWarning = rem <= 60;
+    // 紧急（≤30s）以 ~1.5Hz 频率闪烁
+    const blink = isUrgent && (Math.sin(UI.elapsed * Math.PI * 3) < 0);
+    if (!blink) {
+      ctx.fillStyle = isUrgent ? COLORS.ledDown : (isWarning ? COLORS.gold : '#FFFFFF');
+      ctx.font = '10px "Press Start 2P"';
+      ctx.fillText(formatTime(rem), 226, 42);
+    }
+    // 警告时在计时器右侧显示感叹图形
+    if (isWarning && !blink) {
+      ctx.fillStyle = isUrgent ? COLORS.ledDown : COLORS.gold;
+      ctx.font = '9px "Press Start 2P"';
+      ctx.fillText('!', 290, 42);
+    }
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,0.7)'; ctx.font = '9px "Press Start 2P"';
+    ctx.fillText('DAY ' + order, 226, 42);
+  }
+
+  const ledX = 390, ledY = 8, ledW = 630, ledH = 36;
   ctx.save(); roundRect(ctx, ledX, ledY, ledW, ledH, 3); ctx.clip();
   ctx.fillStyle = COLORS.ledBg; ctx.fillRect(ledX, ledY, ledW, ledH);
   ctx.font = '11px "Courier New"'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
@@ -1301,10 +1457,27 @@ function drawShiftStart(state) {
   yy = wrapText(ctx, shift.objectiveText, px + 40, yy + 24, pw - 80, 22, 3) + 26;
   ctx.fillStyle = 'rgba(232,220,200,0.85)'; ctx.font = '12px "Courier New"';
   ctx.fillText('调查机会：' + state.resources.investigationPoints + '　|　到期回单：' + state.readyCallbackIds.length + ' 份', px + 40, yy);
+  yy += 22;
+
+  // 限时信息块（仅限时班次显示）
+  if (state.shiftTimer && state.shiftTimer.enabled) {
+    const totalSec = state.shiftTimer.totalSeconds;
+    const tMin = Math.floor(totalSec / 60), tSec = totalSec % 60;
+    const totalStr = tMin > 0 ? tMin + ' 分' + (tSec ? ' ' + tSec + ' 秒' : '') : tSec + ' 秒';
+    // 红色底纹警示框
+    ctx.fillStyle = 'rgba(180,40,40,0.22)';
+    roundRect(ctx, px + 36, yy - 14, pw - 72, 26, 4); ctx.fill();
+    ctx.strokeStyle = 'rgba(220,80,80,0.5)'; ctx.lineWidth = 1;
+    roundRect(ctx, px + 36, yy - 14, pw - 72, 26, 4); ctx.stroke();
+    ctx.fillStyle = '#E57373'; ctx.font = '12px "Courier New"';
+    ctx.fillText('★ 本班限时：' + totalStr + '　|　超时后：未处理案件自动退货，绩效照常结算', px + 44, yy + 3);
+    yy += 28;
+  }
+
   ctx.fillStyle = 'rgba(232,220,200,0.6)'; ctx.font = '11px "Courier New"';
-  if (shift.tutorialText) ctx.fillText('提示：' + shift.tutorialText, px + 40, yy + 22);
   const policyText = shift.rules.unprocessedCasePolicy === 'block_end' ? '本班须处理完所有案件方可收班' : '本班收班时未处理案件将自动退货';
-  ctx.fillText('规则：' + policyText + (shift.rules.requiresInspectionBeforeShipping ? ' · 出货前须扒底' : ''), px + 40, yy + 42);
+  ctx.fillText('规则：' + policyText + (shift.rules.requiresInspectionBeforeShipping ? ' · 出货前须扒底' : ''), px + 40, yy);
+  if (shift.tutorialText) ctx.fillText('提示：' + shift.tutorialText, px + 40, yy + 18);
   button('开 始 处 理', BASE_W / 2 - 100, py + ph - 70, 200, 48, true, () => beginShiftWork(state));
 }
 
@@ -1381,12 +1554,26 @@ function drawShiftSummary(state) {
   panel(px, py, pw, ph);
   ctx.fillStyle = COLORS.gold; ctx.font = '22px "ZCOOL KuaiLe"'; ctx.textAlign = 'center';
   ctx.fillText(s.title, BASE_W / 2, py + 48); ctx.textAlign = 'left';
+
+  // 超时强制收班提示横幅
+  if (s.forcedByTimeout) {
+    ctx.fillStyle = 'rgba(180,40,40,0.25)';
+    roundRect(ctx, px + 30, py + 60, pw - 60, 28, 4); ctx.fill();
+    ctx.strokeStyle = 'rgba(220,80,80,0.55)'; ctx.lineWidth = 1;
+    roundRect(ctx, px + 30, py + 60, pw - 60, 28, 4); ctx.stroke();
+    ctx.fillStyle = '#E57373'; ctx.font = '12px "Noto Sans SC"'; ctx.textAlign = 'center';
+    ctx.fillText('限时归零 · 系统强制收班　|　' + s.autoReturned + ' 件案件已自动退货', BASE_W / 2, py + 79);
+    ctx.textAlign = 'left';
+  }
+
   ctx.fillStyle = '#E8DCC8'; ctx.font = '14px "Courier New"';
-  let yy = py + 96;
+  let yy = s.forcedByTimeout ? py + 108 : py + 96;
   const lines = [
     '出货案件：' + s.shipped,
     '手动退货：' + s.returned,
-    '自动退货：' + s.autoReturned,
+    s.forcedByTimeout
+      ? '自动退货：' + s.autoReturned + '（含超时退货）'
+      : '自动退货：' + s.autoReturned,
     '剩余押金标签：' + s.depositRemaining + ' / ' + state.depositTags.max
   ];
   for (const l of lines) { ctx.fillText(l, px + 50, yy); yy += 30; }
@@ -1538,8 +1725,8 @@ function drawScene(state) {
     button('收 班', 196 + 752 - 110, AREA_TOP + 12, 96, 36, true,
       () => { const r = endShift(state); }, { color: can ? COLORS.gold : '#7A6B52', hotColor: '#F57F17', font: '13px "ZCOOL KuaiLe"' });
     // 调查机会指示
-    ctx.fillStyle = 'rgba(212,197,169,0.7)'; ctx.font = '10px "Press Start 2P"'; ctx.textAlign = 'left';
-    ctx.fillText('IP ' + state.resources.investigationPoints, 206, AREA_TOP + 34);
+    ctx.fillStyle = 'rgba(212,197,169,0.7)'; ctx.font = 'bold 14px "Noto Sans SC"'; ctx.textAlign = 'left';
+    ctx.fillText('行动点:' + state.resources.investigationPoints, 206, AREA_TOP + 34);
   }
   // §6.4 标宝偶发台词气泡（仅在班次进行中显示，避免遮挡弹窗）
   if (state.phase === 'SHIFT_ACTIVE') {
@@ -1679,6 +1866,7 @@ function gameLoop(ts) {
   const dt = lastTime ? Math.min(0.05, (ts - lastTime) / 1000) : 0.016;
   lastTime = ts;
   updateAnims(dt);
+  updateShiftTimer(STATE, dt);
   ctx.setTransform(scaleX, 0, 0, scaleY, 0, 0);
   drawFrame();
   requestAnimationFrame(gameLoop);
