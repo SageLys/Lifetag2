@@ -167,6 +167,26 @@ function wrapText(c, text, x, y, maxWidth, lineHeight, maxLines) {
 // ============================================================
 
 const ACTION_IDS = ['selectCase','inspectCase','revealHiddenTag','shipCase','returnCase','buyTagForCase','sellTagFromCase','endShift'];
+const TENDENCY_IDS = ['cold_precision','residual_empathy','gambler_tendency','traffic_instinct','endorsement_worship','over_caution'];
+const TENDENCY_NAMES = {
+  cold_precision:'冷血精准', residual_empathy:'残余共情', gambler_tendency:'赌徒倾向',
+  traffic_instinct:'流量嗅觉', endorsement_worship:'背书崇拜', over_caution:'过度谨慎'
+};
+// 失败结局动态内容（ENDING_DESIGN.md §2.5）：主导倾向（≥3）对应的底标文案与建议流向
+const TENDENCY_FAILURE_INFO = {
+  cold_precision:     { tag:'效率优先型操盘员，信息处理成本极低。押金耗尽原因待核实。',          flow:'降档流向（效率型，本地重新评估）' },
+  gambler_tendency:   { tag:'高风险操作记录超出岗位容差。押金损耗与出货失误直接相关。',            flow:'免责协议签署专区（加急）' },
+  traffic_instinct:   { tag:'流量偏好型，自身案件的流量价值待评估。',                           flow:'流量叙事池（操盘员转型素材）' },
+  endorsement_worship:{ tag:'显性标签依赖症。押金耗尽发生在无背书标签案件的处理阶段。',            flow:'背书核实专区（等待显性标签更新）' },
+  over_caution:       { tag:'决策迟滞，出货效率不足。押金耗尽于绩效扣罚累积。',                  flow:'仓储区（暂存，待激活）' },
+  residual_empathy:   { tag:'共情阈值超出岗位容差。调查后退货频率异常。',                        flow:'情感评估专区（再配置流程中）' },
+  _none:              { tag:'操作风格未分化，综合失调，档案信息量不足。',                         flow:'新手培训班（如有余额）' }
+};
+function zeroTendencies() {
+  const t = {};
+  for (const id of TENDENCY_IDS) t[id] = 0;
+  return t;
+}
 let STATE = null;
 
 function zeroStats() {
@@ -196,6 +216,7 @@ function newPlayerState() {
     selectedCaseId: null, activeCaseIds: [], runtimeCases: {},
     pendingCallbacks: [], readyCallbackIds: [],
     shiftStats: { shipped:0, returned:0, autoReturned:0 },
+    tendencies: zeroTendencies(),
     stats: zeroStats(), lastActionResult: null, finalReport: null,
     shiftSummary: null, reviewQueue: [],
     eventLog: [], turnIndex: 0
@@ -243,6 +264,21 @@ function applyDepositDelta(state, delta, reason) {
     state.runStatus = 'failed';
     logEvent(state, 'run_failed', '押金标签归零');
     setPhase(state, 'RUN_FAILED');
+  }
+}
+
+// 倾向增量累积：出货或手动退货时立即调用，记录玩家主观选择
+function applyTendencyDeltas(state, deltas, reason) {
+  if (!deltas) return;
+  const changed = {};
+  for (const id of TENDENCY_IDS) {
+    if (typeof deltas[id] === 'number' && deltas[id] !== 0) {
+      state.tendencies[id] = (state.tendencies[id] || 0) + deltas[id];
+      changed[id] = deltas[id];
+    }
+  }
+  if (Object.keys(changed).length > 0) {
+    logEvent(state, 'tendency_changed', reason, { payload: { deltas: changed, totals: clone(state.tendencies) } });
   }
 }
 
@@ -324,7 +360,8 @@ function sortCallbacks(state, ids) {
 function enterCallbackReview(state, phase) {
   let ids;
   if (phase === 'FINAL_CALLBACK_REVIEW') {
-    ids = state.pendingCallbacks.filter(c => c.dueShiftOrder === 'final' && c.status !== 'resolved').map(c => c.id);
+    // 终审：清算一切尚未确认的回单（final、1/2 延迟、或到期序号已越过最后一班的 pending）
+    ids = state.pendingCallbacks.filter(c => c.status !== 'resolved').map(c => c.id);
     for (const id of ids) {
       const cb = state.pendingCallbacks.find(c => c.id === id);
       cb.status = 'ready';
@@ -479,6 +516,7 @@ function shipCase(state, caseId, flowId) {
   state.selectedCaseId = null;
   state.turnIndex++;
   logEvent(state, 'case_shipped', '出货 ' + caseId + ' → ' + flowId, { caseId, actionId:'shipCase', payload:{ flowId } });
+  applyTendencyDeltas(state, fr.tendencyDeltas, 'shipCase ' + caseId + '→' + flowId);
 
   startStampAnim(state, flowId, caseId);
 
@@ -513,6 +551,7 @@ function returnCase(state, caseId) {
   state.selectedCaseId = null;
   state.turnIndex++;
   logEvent(state, 'case_returned', '退货 ' + caseId, { caseId, actionId:'returnCase' });
+  applyTendencyDeltas(state, ret.tendencyDeltas, 'returnCase ' + caseId);
   applyDepositDelta(state, ret.depositDelta, 'returnCase');
   startReturnAnim(state, caseId);
   if (state.phase === 'RUN_FAILED') return { ok:true };
@@ -622,8 +661,9 @@ function startNextShift(state) {
   enterShift(state, shift.nextShiftId);
 }
 function enterFinalCallbacksOrEnding(state) {
-  const hasFinal = state.pendingCallbacks.some(c => c.dueShiftOrder === 'final' && c.status !== 'resolved');
-  if (hasFinal) { enterCallbackReview(state, 'FINAL_CALLBACK_REVIEW'); }
+  // 进入结局前清算所有尚未确认的回单（不限延迟类型，规则层兜底）
+  const hasPending = state.pendingCallbacks.some(c => c.status !== 'resolved');
+  if (hasPending) { enterCallbackReview(state, 'FINAL_CALLBACK_REVIEW'); }
   else { setPhase(state, 'ENDING_BUILD'); buildEnding(state); }
 }
 
@@ -638,6 +678,16 @@ function buildEnding(state) {
     if (c.minCompletedShifts != null && state.completedShiftIds.length < c.minCompletedShifts) return false;
     if (c.maxFailedShipments != null && state.stats.failedShipments > c.maxFailedShipments) return false;
     if (c.maxPerformancePenalties != null && state.stats.performancePenalties > c.maxPerformancePenalties) return false;
+    if (c.minTendency) {
+      for (const id in c.minTendency) {
+        if ((state.tendencies[id] || 0) < c.minTendency[id]) return false;
+      }
+    }
+    if (c.maxTendency) {
+      for (const id in c.maxTendency) {
+        if ((state.tendencies[id] || 0) > c.maxTendency[id]) return false;
+      }
+    }
     return true;
   };
   const sorted = DATA.endings.slice().sort((a, b) => a.priority - b.priority);
@@ -655,6 +705,17 @@ function buildEnding(state) {
 }
 
 function restartRun() { startRun(); }
+
+// 取主导倾向：≥3分的最高值倾向ID，若无则返回 null
+function getDominantTendency(state) {
+  if (!state || !state.tendencies) return null;
+  let best = null, bestV = 2; // 必须 > 2（即 ≥3）才算主导
+  for (const id of TENDENCY_IDS) {
+    const v = state.tendencies[id] || 0;
+    if (v > bestV) { best = id; bestV = v; }
+  }
+  return best;
+}
 
 // ============================================================
 //  数据校验（TECH_SPEC §10 / DATA_SCHEMA §0.6）
@@ -1260,7 +1321,7 @@ function drawCallbackReview(state, isFinal) {
   ctx.fillStyle = COLORS.brandRed; roundRect(ctx, px, py, pw, 46, 10); ctx.fill();
   ctx.fillRect(px, py + 30, pw, 16);
   ctx.fillStyle = '#FFFFFF'; ctx.font = '16px "ZCOOL KuaiLe"'; ctx.textAlign = 'center';
-  ctx.fillText(isFinal ? '结算前 · 买家回单' : '班前 · 买家回单到达', BASE_W / 2, py + 30); ctx.textAlign = 'left';
+  ctx.fillText(isFinal ? '终审 · 清算所有未确认回单' : '班前 · 买家回单到达', BASE_W / 2, py + 30); ctx.textAlign = 'left';
   if (cb) {
     const cs = casesById[cb.caseId]; const flow = flowsById[cb.flowId];
     ctx.fillStyle = '#1A1A1A'; ctx.font = 'bold 15px "Noto Sans SC"';
@@ -1344,7 +1405,7 @@ function drawShiftSummary(state) {
 function drawEnding(state) {
   ctx.fillStyle = '#2A2017'; ctx.fillRect(0, 0, BASE_W, BASE_H);
   const r = state.finalReport;
-  const px = 300, py = 90, pw = 680, ph = 540;
+  const px = 300, py = 80, pw = 680, ph = 580;
   panel(px, py, pw, ph, 'rgba(245,240,229,0.97)');
   ctx.fillStyle = '#757575'; ctx.font = '11px "Courier New"'; ctx.textAlign = 'center';
   ctx.fillText(r.reportHeader || '试用期归档报告', BASE_W / 2, py + 36);
@@ -1364,24 +1425,92 @@ function drawEnding(state) {
     '出货失误：' + st.failedShipments + '　绩效扣罚：' + st.performancePenalties
   ];
   for (const l of rows) { ctx.fillText(l, px + 44, yy); yy += 26; }
-  button('再 来 一 次', BASE_W / 2 - 100, py + ph - 62, 200, 46, true, () => restartRun());
+  // 倾向档案与结果标签
+  yy += 8;
+  ctx.strokeStyle = '#C0B090'; ctx.lineWidth = 0.8; ctx.setLineDash([3, 3]);
+  ctx.beginPath(); ctx.moveTo(px + 40, yy); ctx.lineTo(px + pw - 40, yy); ctx.stroke(); ctx.setLineDash([]);
+  yy += 18;
+  ctx.fillStyle = '#5A5247'; ctx.font = '11px "Courier New"'; ctx.textAlign = 'left';
+  const domId = getDominantTendency(state);
+  const tendLine = domId
+    ? '主导倾向：' + (TENDENCY_NAMES[domId] || domId) + '  ' + (state.tendencies[domId] || 0) + ' 分'
+    : '主导倾向：无（操作风格未分化）';
+  ctx.fillText(tendLine, px + 44, yy); yy += 20;
+  if (r.resultTags && r.resultTags.length > 0) {
+    ctx.fillStyle = '#7A6B52';
+    ctx.fillText('档案标签：' + r.resultTags.join(' · '), px + 44, yy);
+  }
+  button('再 来 一 次', BASE_W / 2 - 100, py + ph - 58, 200, 46, true, () => restartRun());
 }
 
 function drawRunFailed(state) {
   ctx.fillStyle = '#1A1208'; ctx.fillRect(0, 0, BASE_W, BASE_H);
-  drawMascot(BASE_W / 2 - 32, 150, 90, 'sad');
-  ctx.fillStyle = COLORS.brandRed; ctx.font = '34px "ZCOOL KuaiLe"'; ctx.textAlign = 'center';
-  ctx.fillText('押金标签已归零', BASE_W / 2, 330);
-  ctx.fillStyle = '#C8B89A'; ctx.font = '14px "Noto Sans SC"';
-  ctx.fillText('你未能保住最后一枚押金标签。', BASE_W / 2, 376);
-  ctx.fillStyle = 'rgba(200,184,154,0.7)'; ctx.font = '12px "Courier New"';
-  ctx.fillText('系统备注：操盘员本人已转为待处理案件，移交下一位操盘员。', BASE_W / 2, 408);
-  if (state && state.stats) {
-    ctx.fillStyle = 'rgba(200,184,154,0.6)'; ctx.font = '11px "Courier New"';
-    ctx.fillText('完成班次 ' + state.completedShiftIds.length + ' · 出货失误 ' + state.stats.failedShipments, BASE_W / 2, 440);
-  }
+  const px = 300, py = 45, pw = 680, ph = 590;
+  panel(px, py, pw, ph, 'rgba(22,10,4,0.97)');
+  // 通知头（红色警示条）
+  ctx.fillStyle = COLORS.brandRed; ctx.fillRect(px, py, pw, 34);
+  ctx.fillStyle = '#FFFFFF'; ctx.font = '13px "ZCOOL KuaiLe"'; ctx.textAlign = 'center';
+  ctx.fillText('押金标签归零处理通知  ·  自动生成  ·  不可申诉', BASE_W / 2, py + 23);
   ctx.textAlign = 'left';
-  button('重 新 上 工', BASE_W / 2 - 100, 480, 200, 50, true, () => restartRun());
+  // 案件编号行
+  ctx.fillStyle = '#E8D8B8'; ctx.font = 'bold 22px "Noto Sans SC"';
+  ctx.fillText('T-00', px + 22, py + 66);
+  ctx.fillStyle = '#A89878'; ctx.font = '13px "Noto Sans SC"';
+  ctx.fillText('押金归零案', px + 86, py + 64);
+  ctx.fillStyle = '#6A5A48'; ctx.font = '10px "Courier New"';
+  ctx.fillText('〔 临时档案号，归档后更新 〕', px + pw - 224, py + 64);
+  const div = (y) => {
+    ctx.strokeStyle = '#6A5A48'; ctx.lineWidth = 0.8; ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(px + 14, y); ctx.lineTo(px + pw - 14, y); ctx.stroke(); ctx.setLineDash([]);
+  };
+  div(py + 76);
+  // 档案摘要
+  const shifts = state ? state.completedShiftIds.length : 0;
+  const failedAtShift = state ? (state.currentShiftOrder || shifts + 1) : shifts + 1;
+  const failedShips = (state && state.stats) ? state.stats.failedShipments : 0;
+  let yy = py + 94;
+  ctx.fillStyle = '#9A8870'; ctx.font = '10px "Courier New"';
+  ctx.fillText('【 档案摘要 】', px + 22, yy); yy += 18;
+  ctx.fillStyle = '#B8A880'; ctx.font = '12px "Noto Sans SC"';
+  yy = wrapText(ctx,
+    '前持证操盘员，押金标签于第 ' + failedAtShift + ' 班操作期间耗尽。已完成 ' + shifts + ' / 7 班次，处理记录不完整。本主体身份已完成置换，转入流转程序。',
+    px + 22, yy, pw - 44, 19, 3) + 22;
+  div(yy); yy += 16;
+  // 初步可见标签
+  ctx.fillStyle = '#9A8870'; ctx.font = '10px "Courier New"';
+  ctx.fillText('【 初步可见标签 】', px + 22, yy); yy += 18;
+  ctx.fillStyle = '#E57373'; ctx.font = '12px "Noto Sans SC"';
+  ctx.fillText('▸ 押金归零', px + 22, yy); yy += 19;
+  ctx.fillStyle = '#A89878';
+  ctx.fillText('▸ ' + shifts + ' 班次记录存疑（完整记录 7 班）', px + 22, yy); yy += 19;
+  ctx.fillText('▸ 再就业意向待确认', px + 22, yy); yy += 22;
+  div(yy); yy += 16;
+  // 初步底标（静态 + 动态）
+  ctx.fillStyle = '#9A8870'; ctx.font = '10px "Courier New"';
+  ctx.fillText('【 初步底标（已触发自动揭示）】', px + 22, yy); yy += 18;
+  ctx.fillStyle = '#8A7A68'; ctx.font = '12px "Noto Sans SC"';
+  ctx.fillText('▸ 本人曾任操盘员（试用级）', px + 22, yy); yy += 19;
+  ctx.fillText('▸ 押金标签管理记录：不理想', px + 22, yy); yy += 19;
+  // 动态底标：按主导倾向选取（§2.5）
+  const domId = getDominantTendency(state);
+  const info = TENDENCY_FAILURE_INFO[domId] || TENDENCY_FAILURE_INFO._none;
+  ctx.fillStyle = '#C8B89A';
+  yy = wrapText(ctx, '▸ ' + info.tag, px + 22, yy, pw - 44, 19, 2) + 22;
+  div(yy); yy += 16;
+  // 建议流向
+  ctx.fillStyle = '#9A8870'; ctx.font = '10px "Courier New"';
+  ctx.fillText('【 建议流向 】', px + 22, yy); yy += 18;
+  ctx.fillStyle = '#A89878'; ctx.font = '12px "Noto Sans SC"';
+  ctx.fillText(info.flow, px + 22, yy); yy += 24;
+  div(yy); yy += 14;
+  // 标宝附注 + 统计
+  ctx.fillStyle = '#757575'; ctx.font = '10px "Courier New"';
+  ctx.fillText('〔 标宝附注 〕 感谢您为人生流通作出贡献！T-00 档案将在下轮开始时归档销毁，本交易所不留记录，但您可以留。', px + 22, yy); yy += 18;
+  if (state && state.stats) {
+    ctx.fillStyle = '#5A5247';
+    ctx.fillText('完成班次 ' + shifts + '  ·  出货失误 ' + failedShips, px + 22, yy);
+  }
+  button('重 新 报 到', BASE_W / 2 - 100, py + ph - 56, 200, 46, true, () => restartRun());
 }
 
 // 主桌面场景（SHIFT_ACTIVE / ACTION_RESULT 背景）

@@ -213,6 +213,31 @@ block_end 或 auto_return
 
 `ignore` 不推荐，用于 Debug 或特殊班次。
 
+### 1.10 TendencyId（操作倾向 ID）
+
+```ts
+type TendencyId =
+  | "cold_precision"      // 冷血精准：不扒底、不揭标直接出货；优先数据标签而非人文信息
+  | "residual_empathy"    // 残余共情：主动查看底细、揭标后仍选择退货；避开已知风险案件
+  | "gambler_tendency"    // 赌徒倾向：在信息不完整时出货高风险流向
+  | "traffic_instinct"    // 流量嗅觉：偏好出货流量流向（flow_traffic / flow_knowledge_economy）
+  | "endorsement_worship" // 背书崇拜：偏好出货大厂、体制流向；依赖可见标签而非调查
+  | "over_caution";       // 过度谨慎：频繁退货、调查完全后仍不出货
+```
+
+说明：
+
+| ID | 中文名 | 触发来源（示例） |
+|---|---|---|
+| `cold_precision` | 冷血精准 | 未扒底/未揭标直接出货 `flow_big_company` / `flow_system` |
+| `residual_empathy` | 残余共情 | 扒底或揭标后选择退货（主动放弃） |
+| `gambler_tendency` | 赌徒倾向 | 出货时调查信息不完整且结果为 `failure` 的流向 |
+| `traffic_instinct` | 流量嗅觉 | 出货流量类流向 |
+| `endorsement_worship` | 背书崇拜 | 出货大厂/体制等权威流向 |
+| `over_caution` | 过度谨慎 | 手动退货 |
+
+当前 MVP 不实现"标签投机"与"系统服从"，因其对应的市场买卖行为尚未设计。
+
 ### 1.8 PerformanceRuleType
 
 ```ts
@@ -533,6 +558,7 @@ interface FlowResult {
   longTermText?: string;
   depositDelta: number;
   resultTags?: string[];
+  tendencyDeltas?: Partial<Record<TendencyId, number>>;
   debugNote?: string;
 }
 ```
@@ -548,7 +574,10 @@ interface FlowResult {
 | `longTermText` | string | 否 | 长期回响，可在回单中附带显示 |
 | `depositDelta` | number | 是 | 回单确认时应用的押金变化 |
 | `resultTags` | string[] | 否 | 最终报告展示用标签，不参与规则计算 |
+| `tendencyDeltas` | Partial\<Record\<TendencyId, number\>\> | 否 | 出货时立即累积的倾向增量；省略或空对象表示无增量 |
 | `debugNote` | string | 否 | 给测试和策划看的备注，不显示给玩家 |
+
+**倾向增量说明：** 出货时（玩家做出判断的那一刻）立即累积，与买家回单的最终 `outcome` 无关。
 
 ### 6.5 ReturnResult
 
@@ -556,6 +585,7 @@ interface FlowResult {
 interface ReturnResult {
   immediateText: string;
   depositDelta: number;
+  tendencyDeltas?: Partial<Record<TendencyId, number>>;
   debugNote?: string;
 }
 ```
@@ -566,6 +596,7 @@ interface ReturnResult {
 |---|---|---|---|
 | `immediateText` | string | 是 | 退货后显示的反馈 |
 | `depositDelta` | number | 是 | 退货时应用的押金变化，MVP 通常为 0 |
+| `tendencyDeltas` | Partial\<Record\<TendencyId, number\>\> | 否 | 手动退货时立即累积的倾向增量；收班自动退货不累积倾向 |
 | `debugNote` | string | 否 | 给测试和策划看的备注 |
 
 ### 6.6 Case JSON 示例
@@ -868,6 +899,24 @@ interface EndingConditions {
   minCompletedShifts?: number;
   maxFailedShipments?: number;
   maxPerformancePenalties?: number;
+  minTendency?: Partial<Record<TendencyId, number>>;
+  maxTendency?: Partial<Record<TendencyId, number>>;
+}
+```
+
+倾向条件说明：
+
+| 字段 | 类型 | 说明 |
+|---|---|---|
+| `minTendency` | Partial\<Record\<TendencyId, number\>\> | 各倾向最低分要求；仅列出的倾向参与判断 |
+| `maxTendency` | Partial\<Record\<TendencyId, number\>\> | 各倾向最高分要求；仅列出的倾向参与判断 |
+
+示例：要求 `cold_precision >= 3` 且 `residual_empathy <= 1`：
+
+```json
+"conditions": {
+  "minTendency": { "cold_precision": 3 },
+  "maxTendency": { "residual_empathy": 1 }
 }
 ```
 
@@ -938,6 +987,8 @@ interface PlayerState {
 
   resources: ResourceState;
 
+  tendencies: Record<TendencyId, number>;
+
   selectedCaseId: string | null;
   activeCaseIds: string[];
   runtimeCases: Record<string, RuntimeCaseState>;
@@ -951,6 +1002,19 @@ interface PlayerState {
 
   eventLog: GameEvent[];
   turnIndex: number;
+}
+```
+
+`tendencies` 字段初始值：
+
+```ts
+{
+  cold_precision: 0,
+  residual_empathy: 0,
+  gambler_tendency: 0,
+  traffic_instinct: 0,
+  endorsement_worship: 0,
+  over_caution: 0
 }
 ```
 
@@ -1174,6 +1238,14 @@ PlayerState = {
     max: gameConfig.maxDepositTags
   },
   resources: clone(gameConfig.defaultShiftResources),
+  tendencies: {
+    cold_precision: 0,
+    residual_empathy: 0,
+    gambler_tendency: 0,
+    traffic_instinct: 0,
+    endorsement_worship: 0,
+    over_caution: 0
+  },
   selectedCaseId: null,
   activeCaseIds: [],
   runtimeCases: {},

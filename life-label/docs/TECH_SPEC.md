@@ -1486,6 +1486,22 @@ FINAL_CALLBACK_REVIEW
 ENDING_BUILD
 ```
 
+### 6.6 终审清算一切未确认回单（规则层兜底）
+
+`enterFinalCallbacksOrEnding()` 不只处理 `final` 回单。进入结局前，必须清算**所有** `status != "resolved"` 的买家回单，无论其延迟是 `final`、`1`、`2`，还是到期班次序号已越过最后一班（例如在最后一班出货且延迟为 `1`，其 `dueShiftOrder` 会落到一个永不到来的班次序号）。
+
+```text
+hasPending = pendingCallbacks 中存在 status != "resolved"
+hasPending == true  => FINAL_CALLBACK_REVIEW（逐一展示并按 depositDelta 结算）
+hasPending == false => ENDING_BUILD
+```
+
+终审阶段同样遵守 §8.1：任一回单扣押金导致归零时立即中断进入 `RUN_FAILED`，不再处理剩余回单、不进入普通结局。
+
+这是规则层兜底，保证每次出货结果都在结局判定前对玩家可见、真实作用于押金，不依赖内容配置正确性。
+
+**内容约定（不替代规则层兜底）：** 最后一班案件的回单延迟应优先使用 `final` 或即时（`0`），保持语义清晰，避免依赖到期序号越界这一兜底路径。
+
 ### 6.5 押金扣除时机
 
 出货本身不扣押金。

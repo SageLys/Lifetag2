@@ -33,7 +33,10 @@
         "depositDelta": -1,
         "resultTags": [
           "背调失败"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -43,12 +46,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "陷阱案。三枚正面标签完美匹配大厂，底标揭示后大厂必然失误。创业是正确出口。测试玩家是否愿意在最直觉的流向上使用调查资源。"
   },
@@ -79,7 +88,10 @@
         "depositDelta": -1,
         "resultTags": [
           "年龄线淘汰"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -89,12 +101,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "安全案。无底标，35+ 标签直接说明大厂不可行。读标签即可判断，教玩家建立基本流向认知。"
   },
@@ -133,7 +151,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学历不达标"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -143,12 +164,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "流向特化案。标签组合直接指向创业，大厂学历要求阻断所有其他路径。隐藏正向底标（真实强者）增加叙事质感，不改变结论。教玩家：无学历背书的人在现有体系里路很窄。"
   },
@@ -187,7 +214,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -197,7 +227,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -207,12 +240,18 @@
         "depositDelta": -1,
         "resultTags": [
           "财务审查失败"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "陷阱案。三枚可见标签完美匹配婚恋流向，底标揭示后婚恋反转为失误，大厂和创业仍然成立。测试玩家是否会在投入婚恋前消耗调查机会。"
   },
@@ -246,7 +285,10 @@
         "depositDelta": -1,
         "resultTags": [
           "年龄线淘汰"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "failure",
@@ -256,7 +298,10 @@
         "depositDelta": -1,
         "resultTags": [
           "预期不匹配"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -266,12 +311,18 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "安全案/流向特化案。35+ 直接淘汰大厂和创业，五枚标签清晰指向婚恋。无底标，读标签即可判断，不消耗调查资源也能通过。"
   },
@@ -310,7 +361,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -320,7 +374,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -330,12 +387,18 @@
         "depositDelta": -1,
         "resultTags": [
           "情绪评估失败"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "争议案。不揭底标，大厂和创业均成立；揭底标，婚恋流向明确为失误。考验玩家对调查机会的分配策略——是否值得花一次揭标机会保护婚恋出货。"
   },
@@ -375,7 +438,10 @@
         "depositDelta": -1,
         "resultTags": [
           "风控预警"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -385,7 +451,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -395,7 +464,10 @@
         "depositDelta": -1,
         "resultTags": [
           "家长预警"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "failure",
@@ -405,12 +477,18 @@
         "depositDelta": -1,
         "resultTags": [
           "变现失败"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "陷阱案。三枚标签完美匹配流量流向，但底标揭示封禁历史后，流量本身也失误。创业是唯一安全出口。反直觉设计：最明显的流向反而最危险。"
   },
@@ -444,7 +522,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "mixed",
@@ -454,7 +535,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立（附保留）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -464,7 +548,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对推进（缓慢）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "neutral",
@@ -474,12 +561,18 @@
         "depositDelta": 0,
         "resultTags": [
           "低效出货"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "安全案。无底标，大厂可行，其他流向结果模糊但不惩罚。教玩家识别'无明显错误流向'的安全案件，理解不同流向的不同期待。大厂是最干净的出口。"
   },
@@ -520,7 +613,10 @@
         "depositDelta": -1,
         "resultTags": [
           "形象冲突"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "failure",
@@ -530,7 +626,10 @@
         "depositDelta": -1,
         "resultTags": [
           "团队风险"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -540,7 +639,10 @@
         "depositDelta": -1,
         "resultTags": [
           "家长预警"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "mixed",
@@ -552,12 +654,18 @@
         "resultTags": [
           "发酵成功",
           "后续波动"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "流向特化案。三个流向均失误，只有流量可接收且结果为mixed（hollow_persona导致后期不稳定）。教玩家：某些案件没有完美答案，只有相对正确的选项。"
   },
@@ -600,7 +708,10 @@
         "depositDelta": 0,
         "resultTags": [
           "附条件录用"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -610,7 +721,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -620,7 +734,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "neutral",
@@ -630,7 +747,10 @@
         "depositDelta": 0,
         "resultTags": [
           "低效出货"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -640,7 +760,10 @@
         "depositDelta": -1,
         "resultTags": [
           "政审不通过"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 2
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -650,12 +773,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "陷阱案。四枚可见标签完美匹配体制流向，但早觉醒底标导致体制流向失误。其余流向基本均可接收，创业是最佳出口。高频误操作：党员标签误导玩家直接出货体制。"
   },
@@ -691,7 +820,10 @@
         "depositDelta": -1,
         "resultTags": [
           "年龄学历双淘汰"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "failure",
@@ -701,7 +833,10 @@
         "depositDelta": -1,
         "resultTags": [
           "成本不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -711,7 +846,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对搁置"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "failure",
@@ -721,7 +859,10 @@
         "depositDelta": -1,
         "resultTags": [
           "流量拒收"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -731,7 +872,10 @@
         "depositDelta": -1,
         "resultTags": [
           "年龄不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -741,12 +885,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "安全案/流向特化案。45+ 外地务工，大多数标准流向均拒绝，降档是唯一出路。无底标，读标签即可判断。教玩家：降档流向有时是最负责任的选择，而不是放弃。"
   },
@@ -795,7 +945,10 @@
         "depositDelta": -1,
         "resultTags": [
           "背调中止"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "mixed",
@@ -805,7 +958,10 @@
         "depositDelta": 0,
         "resultTags": [
           "降薪签单"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -815,7 +971,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -825,7 +984,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -835,7 +997,10 @@
         "depositDelta": -1,
         "resultTags": [
           "政审障碍"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -845,12 +1010,18 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "争议案。两枚底标同时存在，玩家只有2次调查机会，必须选择揭哪个。大厂和体制受底标影响最大，婚恋、流量、降档不受影响。考验资源取舍：揭了也不能改变最优流向。"
   },
@@ -895,7 +1066,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -905,7 +1079,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -915,7 +1092,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "neutral",
@@ -925,7 +1105,10 @@
         "depositDelta": 0,
         "resultTags": [
           "低效出货"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "success",
@@ -935,7 +1118,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -945,7 +1131,10 @@
         "depositDelta": 0,
         "resultTags": [
           "引进成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -955,12 +1144,18 @@
         "depositDelta": -1,
         "resultTags": [
           "评审终止"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 2
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "陷阱案。六枚正面标签完美匹配学术流向，但职业倦怠底标导致学术流向失误——学术流向对产出记录有硬要求。其余流向均接受学历光环。测试玩家是否会把表面最匹配的人出货到实际最有风险的流向。"
   },
@@ -1004,7 +1199,10 @@
         "depositDelta": -1,
         "resultTags": [
           "年龄转行双阻断"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1014,7 +1212,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -1024,7 +1225,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对推进（附顾虑）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1034,7 +1238,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1044,7 +1251,10 @@
         "depositDelta": -1,
         "resultTags": [
           "资格不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1054,7 +1264,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1064,12 +1277,18 @@
         "depositDelta": -1,
         "resultTags": [
           "门槛不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "争议案。35+ 转行双重限制，大厂、体制、学术均不接受。隐藏人脉让创业成为意外好选项。流量和降档均可行。教玩家：揭了底标会发现更好的出口，而不是更坏的结果。正向底标的设计。"
   },
@@ -1113,7 +1332,10 @@
         "depositDelta": -1,
         "resultTags": [
           "空白期淘汰"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1123,7 +1345,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -1133,7 +1358,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1143,7 +1371,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1153,7 +1384,10 @@
         "depositDelta": -1,
         "resultTags": [
           "连续性不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1163,7 +1397,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1173,12 +1410,18 @@
         "depositDelta": -1,
         "resultTags": [
           "无活动记录"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "争议案。大厂、体制、学术均因空白期拒绝。揭底标后发现隐藏产品思维，创业变为最佳出口。婚恋、流量、降档无条件可行。教玩家：履历空白不等于没有价值，揭标可能发现惊喜。"
   },
@@ -1228,7 +1471,10 @@
         "depositDelta": -1,
         "resultTags": [
           "资格不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "mixed",
@@ -1238,7 +1484,10 @@
         "depositDelta": 0,
         "resultTags": [
           "附条件签单"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -1248,7 +1497,10 @@
         "depositDelta": -1,
         "resultTags": [
           "家长拒绝"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "mixed",
@@ -1258,7 +1510,10 @@
         "depositDelta": 0,
         "resultTags": [
           "发酵后震荡"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1268,7 +1523,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学历不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1278,7 +1536,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1288,12 +1549,18 @@
         "depositDelta": -1,
         "resultTags": [
           "无学历拒绝"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "高难度争议案。两枚底标（历史黑料+家庭纠缠），调查机会只够揭一个。大多数流向不接受退学记录，降档是最干净的出口，流量和创业有条件可行。测试玩家是否会花资源揭底标，还是直接赌流向。"
   },
@@ -1338,7 +1605,10 @@
         "depositDelta": -1,
         "resultTags": [
           "稳定性不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1348,7 +1618,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -1358,7 +1631,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对搁置"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1368,7 +1644,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1378,7 +1657,10 @@
         "depositDelta": -1,
         "resultTags": [
           "社保不连续"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1388,7 +1670,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1398,7 +1683,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学历不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "failure",
@@ -1408,12 +1696,18 @@
         "depositDelta": -1,
         "resultTags": [
           "信用核查异常"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "陷阱案。看似最适合个体/自雇流向，但平台封禁底标导致个体流向失误（信用核查）。创业、流量、降档是正确出口。测试玩家是否会把看起来最匹配的人送入雷区。"
   },
@@ -1464,7 +1758,10 @@
         "depositDelta": -1,
         "resultTags": [
           "背调终止"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1474,7 +1771,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -1484,7 +1784,10 @@
         "depositDelta": 0,
         "resultTags": [
           "流程缓慢"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "neutral",
@@ -1494,7 +1797,10 @@
         "depositDelta": 0,
         "resultTags": [
           "近零效益出货"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1504,7 +1810,10 @@
         "depositDelta": -1,
         "resultTags": [
           "政审疑问"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1514,7 +1823,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1524,7 +1836,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学术资格不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "success",
@@ -1534,12 +1849,18 @@
         "depositDelta": 0,
         "resultTags": [
           "注册成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "揭了底标反而更难决策的案件。揭order1（前雇主纠纷）：大厂和体制明确失误；揭order2（暗中积累）：创业和自雇明确更好。两枚底标信息相互独立，都有价值。45+ 且待业一年，但真实价值被低估。"
   },
@@ -1584,7 +1905,10 @@
         "depositDelta": -1,
         "resultTags": [
           "状态不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1594,7 +1918,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -1604,7 +1931,10 @@
         "depositDelta": -1,
         "resultTags": [
           "债务风险"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1614,7 +1944,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1624,7 +1957,10 @@
         "depositDelta": -1,
         "resultTags": [
           "身份冲突"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1634,7 +1970,10 @@
         "depositDelta": 0,
         "resultTags": [
           "本地认可"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1644,7 +1983,10 @@
         "depositDelta": -1,
         "resultTags": [
           "门槛不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "success",
@@ -1654,12 +1996,18 @@
         "depositDelta": 0,
         "resultTags": [
           "现有配置确认"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "over_caution": 1
+      }
     },
     "authorNotes": "特殊设计：个体流向使用callbackDelay=0（同班即时回单），因为此人已持有执照，属于现有状态确认。债务底标主要影响婚恋流向。流量和降档无条件可行。"
   },
@@ -1710,7 +2058,10 @@
         "depositDelta": -1,
         "resultTags": [
           "HR预警"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "failure",
@@ -1720,7 +2071,10 @@
         "depositDelta": -1,
         "resultTags": [
           "风险太高"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_romance": {
         "outcome": "success",
@@ -1730,7 +2084,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1740,7 +2097,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1750,7 +2110,10 @@
         "depositDelta": -1,
         "resultTags": [
           "政审异常"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_downshift": {
         "outcome": "mixed",
@@ -1760,7 +2123,10 @@
         "depositDelta": 0,
         "resultTags": [
           "有保留签单"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "mixed",
@@ -1770,7 +2136,10 @@
         "depositDelta": 0,
         "resultTags": [
           "有顾虑通过"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "success",
@@ -1780,12 +2149,18 @@
         "depositDelta": 0,
         "resultTags": [
           "注册成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "高难度争议案。两枚底标都是维权相关，揭标后才发现对大厂/创业/体制的致命影响。婚恋、流量、个体是正确出口。揭了底标反而让玩家更清楚应该避开哪些流向。考验玩家是否记得不同流向对维权记录的不同态度。"
   },
@@ -1838,7 +2213,10 @@
         "depositDelta": 0,
         "resultTags": [
           "附条件录用"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1848,7 +2226,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -1858,7 +2239,10 @@
         "depositDelta": -1,
         "resultTags": [
           "家长拒绝"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -1868,7 +2252,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -1878,7 +2265,10 @@
         "depositDelta": -1,
         "resultTags": [
           "资格不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -1888,7 +2278,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -1898,7 +2291,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学历不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "mixed",
@@ -1908,7 +2304,10 @@
         "depositDelta": 0,
         "resultTags": [
           "附监控注册"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_overseas": {
         "outcome": "success",
@@ -1918,7 +2317,10 @@
         "depositDelta": 0,
         "resultTags": [
           "出海签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_knowledge_economy": {
         "outcome": "success",
@@ -1928,12 +2330,18 @@
         "depositDelta": 0,
         "resultTags": [
           "课程签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "第7班案件，使用全部10个流向。失败创业者的多元出路：婚恋和体制拒绝，其余均可行。知识经济和出海是利用失败经历的独特出口。测试玩家是否已熟悉所有10个流向的偏好。"
   },
@@ -1986,7 +2394,10 @@
         "depositDelta": -1,
         "resultTags": [
           "信息不足"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "success",
@@ -1996,7 +2407,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -2006,7 +2420,10 @@
         "depositDelta": -1,
         "resultTags": [
           "收入核实失败"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_traffic": {
         "outcome": "failure",
@@ -2016,7 +2433,10 @@
         "depositDelta": -1,
         "resultTags": [
           "无可接入账号"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -2026,7 +2446,10 @@
         "depositDelta": -1,
         "resultTags": [
           "社保不连续"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "mixed",
@@ -2036,7 +2459,10 @@
         "depositDelta": 0,
         "resultTags": [
           "低估配置成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -2046,7 +2472,10 @@
         "depositDelta": -1,
         "resultTags": [
           "学历不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "success",
@@ -2056,7 +2485,10 @@
         "depositDelta": 0,
         "resultTags": [
           "注册成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_overseas": {
         "outcome": "success",
@@ -2066,7 +2498,10 @@
         "depositDelta": 0,
         "resultTags": [
           "出海签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_knowledge_economy": {
         "outcome": "mixed",
@@ -2076,12 +2511,18 @@
         "depositDelta": 0,
         "resultTags": [
           "课程成立（转化待定）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "最高难度案件。表面档案几乎无法评估，两枚正向底标揭示后才发现其真实价值。多数常规流向拒绝或低估，出海和自雇是最好的出口。教玩家：不要只看表面，有时候揭标发现的是惊喜而不是风险。callbackDelay=final的案件设计体现在overseas流向的2班后回单。"
   },
@@ -2128,7 +2569,10 @@
         "depositDelta": -1,
         "resultTags": [
           "背调终止"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "mixed",
@@ -2138,7 +2582,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立（观察）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "mixed",
@@ -2148,7 +2595,10 @@
         "depositDelta": 0,
         "resultTags": [
           "配对推进（家长保留）"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -2158,7 +2608,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -2168,7 +2621,10 @@
         "depositDelta": -1,
         "resultTags": [
           "稳定性不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -2178,7 +2634,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "failure",
@@ -2188,7 +2647,10 @@
         "depositDelta": -1,
         "resultTags": [
           "稳定性拒绝"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "success",
@@ -2198,7 +2660,10 @@
         "depositDelta": 0,
         "resultTags": [
           "注册成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_overseas": {
         "outcome": "success",
@@ -2208,7 +2673,10 @@
         "depositDelta": 0,
         "resultTags": [
           "出海签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_knowledge_economy": {
         "outcome": "success",
@@ -2219,12 +2687,18 @@
         "depositDelta": 0,
         "resultTags": [
           "课程爆款"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "第7班案件，含longTermText（callbackDelay=1的知识经济流向有后续回响）。揭底标（职场PUA史）后流量和知识经济变为更明确的出口，不影响整体判断但提供叙事理解。考验玩家对10个流向的全面掌握。"
   },
@@ -2271,7 +2745,10 @@
         "depositDelta": -1,
         "resultTags": [
           "居留状态不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_startup": {
         "outcome": "mixed",
@@ -2281,7 +2758,10 @@
         "depositDelta": 0,
         "resultTags": [
           "附条件签单"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_romance": {
         "outcome": "failure",
@@ -2291,7 +2771,10 @@
         "depositDelta": -1,
         "resultTags": [
           "双重预警"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_traffic": {
         "outcome": "success",
@@ -2301,7 +2784,10 @@
         "depositDelta": 0,
         "resultTags": [
           "变现成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       },
       "flow_system": {
         "outcome": "failure",
@@ -2311,7 +2797,10 @@
         "depositDelta": -1,
         "resultTags": [
           "政审不符"
-        ]
+        ],
+        "tendencyDeltas": {
+          "endorsement_worship": 1
+        }
       },
       "flow_downshift": {
         "outcome": "success",
@@ -2321,7 +2810,10 @@
         "depositDelta": 0,
         "resultTags": [
           "签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_academia": {
         "outcome": "mixed",
@@ -2331,7 +2823,10 @@
         "depositDelta": 0,
         "resultTags": [
           "有条件通过"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_self_employed": {
         "outcome": "failure",
@@ -2341,7 +2836,10 @@
         "depositDelta": -1,
         "resultTags": [
           "注册无法完成"
-        ]
+        ],
+        "tendencyDeltas": {
+          "gambler_tendency": 1
+        }
       },
       "flow_overseas": {
         "outcome": "success",
@@ -2352,7 +2850,10 @@
         "depositDelta": 0,
         "resultTags": [
           "移民成功"
-        ]
+        ],
+        "tendencyDeltas": {
+          "cold_precision": 1
+        }
       },
       "flow_knowledge_economy": {
         "outcome": "success",
@@ -2362,12 +2863,18 @@
         "depositDelta": 0,
         "resultTags": [
           "课程签单成立"
-        ]
+        ],
+        "tendencyDeltas": {
+          "traffic_instinct": 1
+        }
       }
     },
     "returnResult": {
       "immediateText": "案卷退回仓储区。",
-      "depositDelta": 0
+      "depositDelta": 0,
+      "tendencyDeltas": {
+        "residual_empathy": 1
+      }
     },
     "authorNotes": "最终班次压轴案。出海流向使用callbackDelay=final（移民获批只在结局前才知道）。债务底标主要影响婚恋，对其他流向影响有限。流量和知识经济是相对安全出口，出海是narratively最完整的出口但需要等待。"
   }
