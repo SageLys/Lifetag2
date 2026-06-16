@@ -528,9 +528,9 @@ function inspectCase(state, caseId) {
   state.turnIndex++;
   if (UI.activeCard) { UI.activeCard.flipTarget = 1; }   // 翻到底细面
   logEvent(state, 'case_inspected', cs.backgroundText, { caseId, actionId: 'inspectCase' });
-  return setActionResult(state, { ok:true, actionId:'inspectCase', caseId,
+  return { ok:true, actionId:'inspectCase', caseId,
     message: cs.backgroundText, detailText: '扒底完成 · 调查机会 -1',
-    resourceDeltas: cost, nextPhaseAfterClose: 'SHIFT_ACTIVE' });
+    resourceDeltas: cost };
 }
 
 // §5.4 revealHiddenTag / 揭标
@@ -1533,7 +1533,8 @@ function drawActionResult(state) {
   wrapText(ctx, res.message, bx + 18, by + 42, bw - 200, 18, 2);
   ctx.fillStyle = 'rgba(237,229,212,0.6)'; ctx.font = '10px "Courier New"';
   if (res.detailText) ctx.fillText(res.detailText, bx + 18, by + bh - 10);
-  button('▶ 继续', bx + bw - 150, by + 16, 130, 38, true, () => closeActionResult(state), { color: COLORS.gold, hotColor: '#F57F17', font: '13px "ZCOOL KuaiLe"' });
+  button('按任意键继续', bx + bw - 150, by + 16, 130, 38, true, () => closeActionResult(state), { color: COLORS.gold, hotColor: '#F57F17', font: '13px "ZCOOL KuaiLe"' });
+  clickTargets.push({ x: 0, y: 0, w: BASE_W, h: BASE_H, fn: () => closeActionResult(state) });
 }
 function closeActionResult(state) {
   const res = state.lastActionResult;
@@ -1992,10 +1993,17 @@ function snapCardBack() {
   if (!UI.activeCard) return;
   UI.activeCard.slideT = 0;   // 重新滑回中心
 }
+function onKeyDown(e) {
+  if (STATE && STATE.phase === 'ACTION_RESULT') {
+    e.preventDefault();
+    closeActionResult(STATE);
+  }
+}
 
 canvas.addEventListener('mousedown', onMouseDown);
 canvas.addEventListener('mousemove', onMouseMove);
 window.addEventListener('mouseup', onMouseUp);
+window.addEventListener('keydown', onKeyDown);
 
 // ============================================================
 //  加载与启动

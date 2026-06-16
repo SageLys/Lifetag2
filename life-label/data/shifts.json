@@ -44,7 +44,7 @@
     "rules": {
       "unprocessedCasePolicy": "block_end",
       "hiddenTagRevealMode": "ordered",
-      "requiresInspectionBeforeShipping": true,
+      "requiresInspectionBeforeShipping": false,
       "requiresRevealBeforeShipping": false,
       "performancePenaltyCap": 1,
       "allowEndShiftWhenCallbacksPending": true
@@ -110,7 +110,7 @@
     "rules": {
       "unprocessedCasePolicy": "block_end",
       "hiddenTagRevealMode": "ordered",
-      "requiresInspectionBeforeShipping": true,
+      "requiresInspectionBeforeShipping": false,
       "requiresRevealBeforeShipping": false,
       "performancePenaltyCap": 1,
       "allowEndShiftWhenCallbacksPending": true
@@ -162,7 +162,7 @@
     "resources": {
       "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": 240
+      "timeRemainingSeconds": 120
     },
     "actionCosts": {
       "inspectCase": {
@@ -232,7 +232,7 @@
     "resources": {
       "investigationPoints": 2,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": 210
+      "timeRemainingSeconds": 105
     },
     "actionCosts": {
       "inspectCase": {
@@ -304,7 +304,7 @@
     "resources": {
       "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": 210
+      "timeRemainingSeconds": 105
     },
     "actionCosts": {
       "inspectCase": {
@@ -378,7 +378,7 @@
     "resources": {
       "investigationPoints": 2,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": 210
+      "timeRemainingSeconds": 105
     },
     "actionCosts": {
       "inspectCase": {
@@ -455,7 +455,7 @@
     "resources": {
       "investigationPoints": 3,
       "marketActionPoints": 0,
-      "timeRemainingSeconds": 200
+      "timeRemainingSeconds": 100
     },
     "actionCosts": {
       "inspectCase": {
