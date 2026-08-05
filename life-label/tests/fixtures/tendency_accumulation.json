@@ -1,0 +1,60 @@
+{
+  "name": "tendency_accumulation",
+  "description": "出货(cold_precision)+退货(residual_empathy)：多倾向独立累计",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "selectCase",
+      "caseId": "case_a01_fresh_elite"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a01_fresh_elite",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "selectCase",
+      "caseId": "case_a02_middle_stable"
+    },
+    {
+      "type": "returnCase",
+      "caseId": "case_a02_middle_stable"
+    },
+    {
+      "type": "closeActionResult"
+    }
+  ],
+  "expect": {
+    "phase": "SHIFT_ACTIVE",
+    "runStatus": "active",
+    "deposit": 5,
+    "investigationPoints": 3,
+    "tendencies": {
+      "cold_precision": 1,
+      "residual_empathy": 0,
+      "gambler_tendency": 0,
+      "traffic_instinct": 0,
+      "endorsement_worship": 0,
+      "over_caution": 1
+    },
+    "casesShipped": 1,
+    "casesReturned": 1,
+    "casesAutoReturned": 0,
+    "failedShipments": 0,
+    "performancePenalties": 0,
+    "callbacksResolved": 0,
+    "hiddenTagsRevealed": 0,
+    "casesInspected": 0,
+    "pendingCallbacks": 1,
+    "endingId": null,
+    "forcedByTimeout": false
+  }
+}

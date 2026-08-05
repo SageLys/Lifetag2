@@ -1,0 +1,79 @@
+{
+  "name": "failed_callback",
+  "description": "应届精英案出货到大厂（背调失败）：到期回单确认后押金 -1、计一次出货失误",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "selectCase",
+      "caseId": "case_a01_fresh_elite"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a01_fresh_elite",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "returnCase",
+      "caseId": "case_a02_middle_stable"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "returnCase",
+      "caseId": "case_a03_migrant_worker"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "returnCase",
+      "caseId": "case_a04_reliable_tech"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    }
+  ],
+  "expect": {
+    "phase": "SHIFT_ACTIVE",
+    "runStatus": "active",
+    "deposit": 3,
+    "investigationPoints": 3,
+    "tendencies": {
+      "cold_precision": 0,
+      "residual_empathy": 1,
+      "gambler_tendency": 0,
+      "traffic_instinct": 0,
+      "endorsement_worship": 1,
+      "over_caution": 2
+    },
+    "casesShipped": 1,
+    "casesReturned": 3,
+    "casesAutoReturned": 0,
+    "failedShipments": 1,
+    "performancePenalties": 1,
+    "callbacksResolved": 1,
+    "hiddenTagsRevealed": 0,
+    "casesInspected": 0,
+    "pendingCallbacks": 1,
+    "endingId": null,
+    "forcedByTimeout": false
+  }
+}

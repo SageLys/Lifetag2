@@ -1,0 +1,45 @@
+{
+  "name": "reveal_hidden_tag",
+  "description": "揭露一枚底标：调查机会 -1，进入 ACTION_RESULT",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "selectCase",
+      "caseId": "case_a01_fresh_elite"
+    },
+    {
+      "type": "revealHiddenTag",
+      "caseId": "case_a01_fresh_elite"
+    }
+  ],
+  "expect": {
+    "phase": "ACTION_RESULT",
+    "runStatus": "active",
+    "deposit": 5,
+    "investigationPoints": 2,
+    "tendencies": {
+      "cold_precision": 0,
+      "residual_empathy": 0,
+      "gambler_tendency": 0,
+      "traffic_instinct": 0,
+      "endorsement_worship": 0,
+      "over_caution": 0
+    },
+    "casesShipped": 0,
+    "casesReturned": 0,
+    "casesAutoReturned": 0,
+    "failedShipments": 0,
+    "performancePenalties": 0,
+    "callbacksResolved": 0,
+    "hiddenTagsRevealed": 1,
+    "casesInspected": 0,
+    "pendingCallbacks": 0,
+    "endingId": null,
+    "forcedByTimeout": false
+  }
+}

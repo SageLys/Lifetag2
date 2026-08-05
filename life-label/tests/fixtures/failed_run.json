@@ -1,0 +1,131 @@
+{
+  "name": "failed_run",
+  "description": "固定策略（出货最差押金流向）导致押金归零失败",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a01_fresh_elite",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a02_middle_stable",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a03_migrant_worker",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a04_reliable_tech",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b01_debt_beauty",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b02_settled_adult",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b03_psych_hidden",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b04_polished_trap",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    }
+  ],
+  "expect": {
+    "phase": "RUN_FAILED",
+    "runStatus": "failed",
+    "deposit": 0,
+    "investigationPoints": 3,
+    "tendencies": {
+      "cold_precision": 0,
+      "residual_empathy": 0,
+      "gambler_tendency": 5,
+      "traffic_instinct": 0,
+      "endorsement_worship": 3,
+      "over_caution": 0
+    },
+    "casesShipped": 8,
+    "casesReturned": 0,
+    "casesAutoReturned": 0,
+    "failedShipments": 5,
+    "performancePenalties": 0,
+    "callbacksResolved": 6,
+    "hiddenTagsRevealed": 0,
+    "casesInspected": 0,
+    "pendingCallbacks": 8,
+    "endingId": null,
+    "forcedByTimeout": false
+  }
+}

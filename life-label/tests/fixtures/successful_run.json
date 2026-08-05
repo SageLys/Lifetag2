@@ -1,0 +1,505 @@
+{
+  "name": "successful_run",
+  "description": "固定策略（优先成功结果的出货）跑完七班至结局",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a01_fresh_elite",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a02_middle_stable",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a03_migrant_worker",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a04_reliable_tech",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b01_debt_beauty",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b02_settled_adult",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b03_psych_hidden",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b04_polished_trap",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_c01_banned_influencer",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_c02_single_mother",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_c03_black_red_persona",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_c04_viral_obvious",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_c05_single_parent_debt",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_d01_awakened_cadre",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_d02_veteran_worker",
+      "flowId": "flow_downshift"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_d03_overseas_returnee",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_d04_hometown_return",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_d05_cadre_lawsuit",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e01_burnout_professor",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e02_mid_life_pivot",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e03_housewife_return",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e04_gen_z_dropout",
+      "flowId": "flow_downshift"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e05_hopper_z",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_e06_scholar_trauma",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f01_freelance_consultant",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f02_ex_executive",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f03_rural_returnee",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f04_labor_hero",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f05_honest_indie",
+      "flowId": "flow_downshift"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f06_hollow_kol",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_f07_risk_talent",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g01_successful_failure",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g02_hidden_wealth",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g03_pua_survivor",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g04_overseas_limbo",
+      "flowId": "flow_traffic"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g05_overseas_clear",
+      "flowId": "flow_overseas"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g06_triple_trap",
+      "flowId": "flow_downshift"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g07_elder_migrant",
+      "flowId": "flow_self_employed"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_g08_capstone",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "enterFinalCallbacksOrEnding"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    }
+  ],
+  "expect": {
+    "phase": "ENDING_DISPLAY",
+    "runStatus": "completed",
+    "deposit": 5,
+    "investigationPoints": 3,
+    "tendencies": {
+      "cold_precision": 25,
+      "residual_empathy": 3,
+      "gambler_tendency": 1,
+      "traffic_instinct": 9,
+      "endorsement_worship": 5,
+      "over_caution": 0
+    },
+    "casesShipped": 39,
+    "casesReturned": 0,
+    "casesAutoReturned": 0,
+    "failedShipments": 0,
+    "performancePenalties": 0,
+    "callbacksResolved": 39,
+    "hiddenTagsRevealed": 0,
+    "casesInspected": 0,
+    "pendingCallbacks": 39,
+    "endingId": "ending_ace_operator",
+    "forcedByTimeout": false
+  }
+}

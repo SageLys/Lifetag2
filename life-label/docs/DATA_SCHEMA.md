@@ -5,6 +5,11 @@
 文档性质：JSON 数据接口协议  
 对应机制规格：`TECH_SPEC.md`
 
+> 重构后映射：本文 JSON 数据结构对应 `src/data/GameDataTypes.ts`（类型）与 `src/data/GameDataValidator.ts`（校验）。
+> 运行时状态（PlayerState / tendencies / 报告）对应 `src/core/model/*`；tendency 唯一定义来源为
+> `src/core/model/TendencyState.ts`。tendency 系统完整保留（ID、tendencyDeltas、累计、主导判断、
+> 结局条件 minTendency/maxTendency、失败报告），未删除或弱化。详见 docs/ARCHITECTURE.md。
+
 ---
 
 ## 0. 总原则

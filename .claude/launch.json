@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "life-label",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd life-label && npm run dev -- --host 127.0.0.1 --port 5173 --strictPort"],
+      "port": 5173
+    }
+  ]
+}

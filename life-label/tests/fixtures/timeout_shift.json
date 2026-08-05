@@ -1,0 +1,141 @@
+{
+  "name": "timeout_shift",
+  "description": "进入第三班（限时）后令计时归零：强制收班、未处理案件自动退货",
+  "commands": [
+    {
+      "type": "startRun"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a01_fresh_elite",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a02_middle_stable",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a03_migrant_worker",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_a04_reliable_tech",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b01_debt_beauty",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b02_settled_adult",
+      "flowId": "flow_romance"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b03_psych_hidden",
+      "flowId": "flow_big_company"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "shipCase",
+      "caseId": "case_b04_polished_trap",
+      "flowId": "flow_startup"
+    },
+    {
+      "type": "closeActionResult"
+    },
+    {
+      "type": "startNextShift"
+    },
+    {
+      "type": "beginShiftWork"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "acknowledgeCallback"
+    },
+    {
+      "type": "tick",
+      "dt": 999
+    }
+  ],
+  "expect": {
+    "phase": "SHIFT_SUMMARY",
+    "runStatus": "active",
+    "deposit": 4,
+    "investigationPoints": 3,
+    "tendencies": {
+      "cold_precision": 6,
+      "residual_empathy": 0,
+      "gambler_tendency": 0,
+      "traffic_instinct": 0,
+      "endorsement_worship": 2,
+      "over_caution": 0
+    },
+    "casesShipped": 8,
+    "casesReturned": 0,
+    "casesAutoReturned": 5,
+    "failedShipments": 0,
+    "performancePenalties": 1,
+    "callbacksResolved": 8,
+    "hiddenTagsRevealed": 0,
+    "casesInspected": 0,
+    "pendingCallbacks": 8,
+    "endingId": null,
+    "forcedByTimeout": true
+  }
+}
